@@ -1,0 +1,44 @@
+@{
+    List<string> HtmlTagData = new List<string>(){};
+    if(ViewBag.HtmlTagData!= null){
+        @foreach (KeyValuePair<string, string> item in ViewBag.HtmlTagData)
+        {
+            HtmlTagData.Add($"data-{@item.Key}='{@item.Value}'");
+        }
+    }
+
+    List<string> CustomNavData = new List<string>(){};
+    if(ViewBag.CustomNavData!= null){
+        @foreach (KeyValuePair<string, string> item in ViewBag.CustomNavData)
+        {
+            CustomNavData.Add($"data-{@item.Key}=\"{@item.Value}\"");
+        }
+    }
+}
+
+
+<!DOCTYPE html>
+<html lang="en" data-url-prefix="/" data-footer="true" @Html.Raw(String.Join(" ",HtmlTagData))>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Acorn Admin Template | @ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.Description" />
+    <partial name="_Layout.Head" />
+</head>
+
+<body>
+    <div id="root">
+        <div id="nav" class="nav-container d-flex" @Html.Raw(String.Join(" ",CustomNavData))>
+            <partial name="_Layout.Nav" />
+        </div>
+        <main>
+            @RenderBody()
+        </main>
+        <partial name="_Layout.Footer" />
+    </div>
+    <partial name="_Layout.SettingsModal" />
+    <partial name="_Layout.SearchModal" />
+    <partial name="_Layout.Scripts"/>
+</body>
+</html>

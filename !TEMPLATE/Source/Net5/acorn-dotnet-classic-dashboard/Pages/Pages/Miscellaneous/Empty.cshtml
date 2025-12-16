@@ -1,0 +1,45 @@
+@page
+@{
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){};
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){};
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){};
+    ViewBag.PageScripts = PageScripts;
+
+    Dictionary<string, string> Breadcrumbs = new Dictionary<string, string>(){
+        {"/Index","Home"},
+        {"/Pages/Index","Pages"},
+        {"/Pages/Miscellaneous/Index","Miscellaneous"}
+    };
+    ViewBag.Breadcrumbs = Breadcrumbs; 
+
+    ViewBag.Title = "Empty"; 
+    ViewBag.Description = "Empty Page";
+}
+<div class="container">
+  <!-- Title and Top Buttons Start -->
+  <div class="page-title-container">
+    <div class="row">
+      <!-- Title Start -->
+      <div class="col-12 col-md-7">
+        <h1 class="mb-0 pb-0 display-4" id="title">@ViewBag.Title</h1>
+        <partial name="_Layout.Breadcrumb"/>
+      </div>
+      <!-- Title End -->
+    </div>
+  </div>
+  <!-- Title and Top Buttons End -->
+
+  <!-- Content Start -->
+  <h2 class="small-title">Content Title</h2>
+  <div class="card mb-5">
+    <div class="card-body h-100">Content</div>
+  </div>
+  <!-- Content End -->
+</div>

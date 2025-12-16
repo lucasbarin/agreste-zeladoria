@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+  <!-- [Head] start -->
+
+  <head>
+    @@include('../layouts/head-page-meta.html', {'title': 'Project'}) @@include('../layouts/head-css.html')
+  </head>
+  <!-- [Head] end -->
+  <!-- [Body] Start -->
+
+  <body @@bodySetup>
+    @@include('../layouts/layout-vertical.html')
+
+    <!-- [ Main Content ] start -->
+    <div class="pc-container">
+      <div class="pc-content">
+        @@include('../layouts/breadcrumb.html', {'breadcrumb-item': 'Dashboard', 'breadcrumb-item-active': 'Project'})
+        <!-- [ Main Content ] start -->
+        <div class="row">
+          <!-- project-ticket start -->
+          <div class="col-xl-4 col-md-12">
+            <div class="card proj-t-card card-border-danger">
+              <div class="card-body">
+                <div class="row align-items-center m-b-30">
+                  <div class="col-auto">
+                    <i class="material-icons-two-tone text-danger f-38">event_available</i>
+                  </div>
+                  <div class="col p-l-0">
+                    <h6 class="m-b-5">Ticket Answered</h6>
+                    <h6 class="m-b-0 text-danger">Live Update</h6>
+                  </div>
+                </div>
+                <div class="row align-items-center text-center">
+                  <div class="col">
+                    <h6 class="m-b-0">327</h6>
+                  </div>
+                  <div class="col"><i class="fas fa-exchange-alt text-danger f-18"></i></div>
+                  <div class="col">
+                    <h6 class="m-b-0">10 Days</h6>
+                  </div>
+                </div>
+                <h6 class="pt-badge bg-light-danger">53%</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6">
+            <div class="card proj-t-card card-border-success">
+              <div class="card-body">
+                <div class="row align-items-center m-b-30">
+                  <div class="col-auto">
+                    <i class="material-icons-two-tone text-success f-38">account_balance</i>
+                  </div>
+                  <div class="col p-l-0">
+                    <h6 class="m-b-5">Project Launched</h6>
+                    <h6 class="m-b-0 text-success">Live Update</h6>
+                  </div>
+                </div>
+                <div class="row align-items-center text-center">
+                  <div class="col">
+                    <h6 class="m-b-0">3 Year</h6>
+                  </div>
+                  <div class="col"><i class="fas fa-exchange-alt text-success f-18"></i></div>
+                  <div class="col">
+                    <h6 class="m-b-0">623</h6>
+                  </div>
+                </div>
+                <h6 class="pt-badge bg-light-success">76%</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6">
+            <div class="card proj-t-card card-border-info">
+              <div class="card-body">
+                <div class="row align-items-center m-b-30">
+                  <div class="col-auto">
+                    <i class="material-icons-two-tone text-info f-38">emoji_objects</i>
+                  </div>
+                  <div class="col p-l-0">
+                    <h6 class="m-b-5">Unique Innovation</h6>
+                    <h6 class="m-b-0 text-info">Live Update</h6>
+                  </div>
+                </div>
+                <div class="row align-items-center text-center">
+                  <div class="col">
+                    <h6 class="m-b-0">1 Month</h6>
+                  </div>
+                  <div class="col"><i class="fas fa-exchange-alt text-info f-18"></i></div>
+                  <div class="col">
+                    <h6 class="m-b-0">248</h6>
+                  </div>
+                </div>
+                <h6 class="pt-badge bg-light-info">73%</h6>
+              </div>
+            </div>
+          </div>
+          <!-- project-ticket end -->
+          <!-- project and visite start -->
+          <div class="col-xl-4 col-md-12">
+            <div class="card overflow-hidden card-border-info">
+              <div class="card-body bg-info">
+                <div id="proj-earning"></div>
+              </div>
+              <div class="card-footer">
+                <h6 class="text-muted m-b-30 m-t-15">Total completed project and earning</h6>
+                <div class="row text-center">
+                  <div class="col-6 border-right">
+                    <h6 class="text-muted m-b-10">Completed Projects</h6>
+                    <h3 class="m-b-0">175</h3>
+                  </div>
+                  <div class="col-6">
+                    <h6 class="text-muted m-b-10">Total Earnings</h6>
+                    <h3 class="m-b-0">76.6M</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5>To Do List</h5>
+              </div>
+              <div class="card-body widget-last-task">
+                <div class="new-task">
+                  <div class="to-do-list mb-3">
+                    <div class="d-inline-block">
+                      <div class="check-task form-check">
+                        <input type="checkbox" class="form-check-input" id="customCheck1" />
+                        <label class="form-check-label" for="customCheck1">Check your Email</label>
+                      </div>
+                    </div>
+                    <div class="float-end"
+                      ><a href="#!" class="delete_todolist"><i class="far fa-trash-alt"></i></a
+                    ></div>
+                  </div>
+                  <div class="to-do-list mb-3">
+                    <div class="d-inline-block">
+                      <div class="check-task form-check">
+                        <input type="checkbox" class="form-check-input" id="customCheck2" />
+                        <label class="form-check-label" for="customCheck2">Make YouTube Video</label>
+                      </div>
+                    </div>
+                    <div class="float-end"
+                      ><a href="#!" class="delete_todolist"><i class="far fa-trash-alt"></i></a
+                    ></div>
+                  </div>
+                  <div class="to-do-list mb-3">
+                    <div class="d-inline-block">
+                      <div class="check-task form-check">
+                        <input type="checkbox" class="form-check-input" id="customCheck3" />
+                        <label class="form-check-label" for="customCheck3">Create Banner</label>
+                      </div>
+                    </div>
+                    <div class="float-end"
+                      ><a href="#!" class="delete_todolist"><i class="far fa-trash-alt"></i></a
+                    ></div>
+                  </div>
+                  <div class="to-do-list mb-3">
+                    <div class="d-inline-block">
+                      <div class="check-task form-check">
+                        <input type="checkbox" class="form-check-input" id="customCheck4" />
+                        <label class="form-check-label" for="customCheck4">Upload Project</label>
+                      </div>
+                    </div>
+                    <div class="float-end"
+                      ><a href="#!" class="delete_todolist"><i class="far fa-trash-alt"></i></a
+                    ></div>
+                  </div>
+                  <div class="to-do-list mb-3">
+                    <div class="d-inline-block">
+                      <div class="check-task form-check">
+                        <input type="checkbox" class="form-check-input" id="customCheck5" />
+                        <label class="form-check-label" for="customCheck5">Update Task</label>
+                      </div>
+                    </div>
+                    <div class="float-end"
+                      ><a href="#!" class="delete_todolist"><i class="far fa-trash-alt"></i></a
+                    ></div>
+                  </div>
+                  <div class="to-do-list mb-3">
+                    <div class="d-inline-block">
+                      <div class="check-task form-check">
+                        <input type="checkbox" class="form-check-input" id="customCheck6" />
+                        <label class="form-check-label" for="customCheck6">Build new project</label>
+                      </div>
+                    </div>
+                    <div class="float-end"
+                      ><a href="#!" class="delete_todolist"><i class="far fa-trash-alt"></i></a
+                    ></div>
+                  </div>
+                  <div class="to-do-list mb-3">
+                    <div class="d-inline-block">
+                      <div class="check-task form-check">
+                        <input type="checkbox" class="form-check-input" id="customCheck7" />
+                        <label class="form-check-label" for="customCheck7">Prepare document and tutorial</label>
+                      </div>
+                    </div>
+                    <div class="float-end"
+                      ><a href="#!" class="delete_todolist"><i class="far fa-trash-alt"></i></a
+                    ></div>
+                  </div>
+                </div>
+                <div class="right-icon-control m-t-15">
+                  <div class="input-group input-group-button">
+                    <input type="text" class="form-control" placeholder="Add Task" autocomplete="off" />
+                    <button class="btn btn-primary" type="button"><i class="feather icon-plus m-0"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-12">
+            <div class="card task-card">
+              <div class="card-header">
+                <h5>Tasks</h5>
+              </div>
+              <div class="card-body">
+                <ul class="list-unstyled task-list">
+                  <li>
+                    <i class="feather icon-check f-w-600 task-icon bg-success"></i>
+                    <p class="m-b-5">8:50</p>
+                    <h6 class="text-muted"
+                      >Call to customer <span class="text-primary"> <a href="#!" class="text-primary">Jacob</a> </span> and discuss the</h6
+                    >
+                  </li>
+                  <li>
+                    <i class="task-icon bg-primary"></i>
+                    <p class="m-b-5">Sat, 5 Mar</p>
+                    <h6 class="text-muted">Design mobile Application</h6>
+                  </li>
+                  <li>
+                    <i class="task-icon bg-danger"></i>
+                    <p class="m-b-5">Sun, 17 Feb</p>
+                    <h6 class="text-muted"
+                      ><span class="text-primary"><a href="#!" class="text-primary">Jeny</a></span> assign you a task
+                      <span class="text-primary"><a href="#!" class="text-primary">Mockup Design.</a></span></h6
+                    >
+                  </li>
+                  <li>
+                    <i class="task-icon bg-warning"></i>
+                    <p class="m-b-5">Sat, 18 Mar</p>
+                    <h6 class="text-muted">Design logo</h6>
+                  </li>
+                </ul>
+                <div class="text-center">
+                  <a href="#!" class="b-b-primary text-primary">View Friend List</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- expansions-section start -->
+          <div class="col-xl-4 col-md-6">
+            <div class="card card-border-primary">
+              <div class="card-body">
+                <h6 class="text-primary mb-3">App design and development</h6>
+                <h6 class="mb-0"
+                  ><i class="feather icon-arrow-up text-success"></i>$6,456<span class="float-end"
+                    ><i class="feather icon-arrow-down text-danger"></i>$2,500</span
+                  >
+                </h6>
+                <div class="progress mt-1" style="height: 6px">
+                  <div
+                    class="progress-bar bg-primary rounded"
+                    role="progressbar"
+                    style="width: 60%"
+                    aria-valuenow="60"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+                <span class="mt-1 d-block mb-0">This Week<span class="float-end">Previous Week</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6">
+            <div class="card card-border-danger">
+              <div class="card-body">
+                <h6 class="text-danger mb-3">Landing page design</h6>
+                <h6 class="mb-0"
+                  ><i class="feather icon-arrow-down text-danger"></i>$2,450<span class="float-end"
+                    ><i class="feather icon-arrow-up text-success"></i>$5,420</span
+                  >
+                </h6>
+                <div class="progress mt-1" style="height: 6px">
+                  <div
+                    class="progress-bar bg-danger rounded"
+                    role="progressbar"
+                    style="width: 40%"
+                    aria-valuenow="40"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+                <span class="mt-1 d-block mb-0">This Year<span class="float-end">Previous Year</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-12">
+            <div class="card card-border-info">
+              <div class="card-body">
+                <h6 class="text-info mb-3">Mockup design</h6>
+                <h6 class="mb-0"
+                  ><i class="feather icon-arrow-down text-danger"></i>$8,360<span class="float-end"
+                    ><i class="feather icon-arrow-up text-success"></i>$9,400</span
+                  >
+                </h6>
+                <div class="progress mt-1" style="height: 6px">
+                  <div
+                    class="progress-bar bg-info rounded"
+                    role="progressbar"
+                    style="width: 40%"
+                    aria-valuenow="40"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+                <span class="mt-1 d-block mb-0">This Month<span class="float-end">Previous Month</span></span>
+              </div>
+            </div>
+          </div>
+          <!-- expansions-section end -->
+          <!-- [ user Project list ] start -->
+          <div class="col-xl-7 col-md-12">
+            <div class="card user-list table-card">
+              <div class="card-header">
+                <h5>User Project List</h5>
+              </div>
+              <div class="card-body pb-0">
+                <div class="table-responsive">
+                  <div class="user-scroll" style="height: 380px; position: relative">
+                    <table class="table table-hover m-0">
+                      <thead>
+                        <tr>
+                          <th>User</th>
+                          <th>project</th>
+                          <th>Completed</th>
+                          <th>Status</th>
+                          <th>Date</th>
+                        </tr></thead
+                      >
+                      <tbody>
+                        <tr>
+                          <td
+                            ><img class="rounded-circle" style="width: 40px" src="../assets/images/user/avatar-1.jpg" alt="activity-user"
+                          /></td>
+                          <td>
+                            <h6 class="mb-1">Social Media App</h6>
+                            <p class="m-0">Assigned to <a href="#" class="text-success">Tristan Madsen</a></p>
+                          </td>
+                          <td>326,134</td>
+                          <td class="text-success">68%</td>
+                          <td>October 26, 2017</td>
+                        </tr>
+                        <tr>
+                          <td
+                            ><img class="rounded-circle" style="width: 40px" src="../assets/images/user/avatar-2.jpg" alt="activity-user"
+                          /></td>
+                          <td>
+                            <h6 class="mb-1">Newspaper Wordpress Web</h6>
+                            <p class="m-0">Assigned to <a href="#" class="text-danger">Marcus Poulsen</a></p>
+                          </td>
+                          <td>110,134</td>
+                          <td class="text-danger">46%</td>
+                          <td>September 4, 2017</td>
+                        </tr>
+                        <tr>
+                          <td
+                            ><img class="rounded-circle" style="width: 40px" src="../assets/images/user/avatar-3.jpg" alt="activity-user"
+                          /></td>
+                          <td>
+                            <h6 class="mb-1">Dashboard UI Kit Design</h6>
+                            <p class="m-0">Assigned to <a href="#" class="text-primary">Felix Johansen</a></p>
+                          </td>
+                          <td>226,134</td>
+                          <td class="text-primary">31%</td>
+                          <td>November 14, 2017</td>
+                        </tr>
+                        <tr>
+                          <td
+                            ><img class="rounded-circle" style="width: 40px" src="../assets/images/user/avatar-1.jpg" alt="activity-user"
+                          /></td>
+                          <td>
+                            <h6 class="mb-1">Social Media App</h6>
+                            <p class="m-0">Assigned to <a href="#" class="text-success">Ida Jorgensen</a></p>
+                          </td>
+                          <td>500,134</td>
+                          <td class="text-success">85%</td>
+                          <td>December 14, 2017</td>
+                        </tr>
+                        <tr>
+                          <td
+                            ><img class="rounded-circle" style="width: 40px" src="../assets/images/user/avatar-3.jpg" alt="activity-user"
+                          /></td>
+                          <td>
+                            <h6 class="mb-1">Social Media App</h6>
+                            <p class="m-0">Assigned to <a href="#" class="text-danger">Tristan Madsen</a></p>
+                          </td>
+                          <td>326,134</td>
+                          <td class="text-danger">68%</td>
+                          <td>January 26, 2017</td>
+                        </tr>
+                        <tr>
+                          <td
+                            ><img class="rounded-circle" style="width: 40px" src="../assets/images/user/avatar-4.jpg" alt="activity-user"
+                          /></td>
+                          <td>
+                            <h6 class="mb-1">Newspaper Wordpress Web</h6>
+                            <p class="m-0">Assigned to <a href="#" class="text-primary">Marcus Poulsen</a></p>
+                          </td>
+                          <td>110,134</td>
+                          <td class="text-primary">46%</td>
+                          <td>April 4, 2017</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- [ user Project list ] end -->
+          <!-- [ user web-list ] start -->
+          <div class="col-xl-5 col-md-12">
+            <div class="card feed-card">
+              <div class="card-header">
+                <h5>Feeds</h5>
+              </div>
+              <div class="feed-scroll" style="height: 380px; position: relative">
+                <div class="card-body">
+                  <div class="row m-b-25 align-items-center">
+                    <div class="col-auto p-r-0">
+                      <i class="feather icon-bell bg-light-primary feed-icon"></i>
+                    </div>
+                    <div class="col">
+                      <a href="#!">
+                        <h6 class="m-b-5">You have 3 pending tasks. <span class="text-muted float-end f-14">Just Now</span></h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row m-b-25 align-items-center">
+                    <div class="col-auto p-r-0">
+                      <i class="feather icon-shopping-cart bg-light-danger feed-icon"></i>
+                    </div>
+                    <div class="col">
+                      <a href="#!">
+                        <h6 class="m-b-5">New order received <span class="text-muted float-end f-14">30 min ago</span> </h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row m-b-25 align-items-center">
+                    <div class="col-auto p-r-0">
+                      <i class="feather icon-file-text bg-light-success feed-icon"></i>
+                    </div>
+                    <div class="col">
+                      <a href="#!">
+                        <h6 class="m-b-5">You have 3 pending tasks. <span class="text-muted float-end f-14">Just Now</span></h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row m-b-25 align-items-center">
+                    <div class="col-auto p-r-0">
+                      <i class="feather icon-bell bg-light-primary feed-icon"></i>
+                    </div>
+                    <div class="col">
+                      <a href="#!">
+                        <h6 class="m-b-5">You have 4 tasks Done. <span class="text-muted float-end f-14">1 hours ago</span></h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row m-b-25 align-items-center">
+                    <div class="col-auto p-r-0">
+                      <i class="feather icon-file-text bg-light-success feed-icon"></i>
+                    </div>
+                    <div class="col">
+                      <a href="#!">
+                        <h6 class="m-b-5">You have 2 pending tasks. <span class="text-muted float-end f-14">Just Now</span></h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row m-b-25 align-items-center">
+                    <div class="col-auto p-r-0">
+                      <i class="feather icon-shopping-cart bg-light-danger feed-icon"></i>
+                    </div>
+                    <div class="col">
+                      <a href="#!">
+                        <h6 class="m-b-5">New order received <span class="text-muted float-end f-14">4 hours ago</span> </h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row m-b-25 align-items-center">
+                    <div class="col-auto p-r-0">
+                      <i class="feather icon-shopping-cart bg-light-danger feed-icon"></i>
+                    </div>
+                    <div class="col">
+                      <a href="#!">
+                        <h6 class="m-b-5">New order Done <span class="text-muted float-end f-14">Just Now</span></h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row m-b-25 align-items-center">
+                    <div class="col-auto p-r-0">
+                      <i class="feather icon-file-text bg-light-success feed-icon"></i>
+                    </div>
+                    <div class="col">
+                      <a href="#!">
+                        <h6 class="m-b-5">You have 5 pending tasks. <span class="text-muted float-end f-14">5 hours ago</span></h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row m-b-0 align-items-center">
+                    <div class="col-auto p-r-0">
+                      <i class="feather icon-bell bg-light-primary feed-icon"></i>
+                    </div>
+                    <div class="col">
+                      <a href="#!">
+                        <h6 class="m-b-5">You have 4 tasks Done. <span class="text-muted float-end f-14">2 hours ago</span></h6>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- [ user web-list ] end -->
+        </div>
+        <!-- [ Main Content ] end -->
+      </div>
+    </div>
+    <!-- [ Main Content ] end -->
+    @@include('../layouts/footer-block.html') @@include('../layouts/customizer.html')
+    <!-- [Page Specific JS] start -->
+    <script src="../assets/js/plugins/apexcharts.min.js"></script>
+    <script src="../assets/js/pages/dashboard-project.js"></script>
+    <!-- [Page Specific JS] end -->
+    @@include('../layouts/footer-js.html')
+  </body>
+  <!-- [Body] end -->
+</html>

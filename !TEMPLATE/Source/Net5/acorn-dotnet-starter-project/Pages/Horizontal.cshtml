@@ -1,0 +1,50 @@
+@page
+@{
+    string _overrideDataString = JsonSerializer.Serialize(new {
+      attributes = new { placement = "horizontal", layout="boxed" },
+      storagePrefix = "starter-project",
+      showSettings = false
+    });   
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){
+      {"override",_overrideDataString}
+    };
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){};
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){
+      "/js/pages/horizontal.js"
+    };
+    ViewBag.PageScripts = PageScripts;
+
+    ViewBag.Title = "Horizontal Starter Page"; 
+    ViewBag.Description = "An empty page with a boxed horizontal layout.";
+}
+<div class="container">
+  <!-- Title and Top Buttons Start -->
+  <div class="page-title-container">
+    <div class="row">
+      <!-- Title Start -->
+      <div class="col-12 col-md-7">
+        <h1 class="mb-0 pb-0 display-4" id="title">@ViewBag.Title</h1>
+        <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
+          <ul class="breadcrumb pt-0">
+            <li class="breadcrumb-item"><a asp-page="/Index">Home</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Title End -->
+    </div>
+  </div>
+  <!-- Title and Top Buttons End -->
+
+  <!-- Content Start -->
+  <div class="card mb-2">
+    <div class="card-body h-100">@ViewBag.Description</div>
+  </div>
+  <!-- Content End -->
+</div>

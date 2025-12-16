@@ -1,0 +1,58 @@
+[
+    {
+        "label": "Appointments",
+        "url": "Appointments.html"
+    },
+    {
+        "label": "Appointments > New",
+        "url": "Appointments.New.html"
+    },
+    {
+        "label": "Articles > Detail",
+        "url": "Articles.Detail.html"
+    },
+    {
+        "label": "Articles",
+        "url": "Articles.html"
+    },
+    {
+        "label": "Consult",
+        "url": "Consult.html"
+    },
+    {
+        "label": "Dashboards > Doctor",
+        "url": "Dashboards.Doctor.html"
+    },
+    {
+        "label": "Dashboards > Patient",
+        "url": "Dashboards.Patient.html"
+    },
+    {
+        "label": "Doctors > Detail",
+        "url": "Doctors.Detail.html"
+    },
+    {
+        "label": "Doctors",
+        "url": "Doctors.html"
+    },
+    {
+        "label": "Guidebook",
+        "url": "Guidebook.html"
+    },
+    {
+        "label": "Prescriptions",
+        "url": "Prescriptions.html"
+    },
+    {
+        "label": "Results > Detail",
+        "url": "Results.Detail.html"
+    },
+    {
+        "label": "Results",
+        "url": "Results.html"
+    },
+    {
+        "label": "Settings",
+        "url": "Settings.html"
+    }
+]

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <!-- [Head] start -->
+
+  <head>
+    @@include('../layouts/head-page-meta.html', {'title': 'Code verification'}) @@include('../layouts/head-css.html')
+  </head>
+  <!-- [Head] end -->
+  <!-- [Body] Start -->
+
+  <body @@bodySetup>
+    @@include('../layouts/loader.html')
+    <div class="auth-main v2">
+      <div class="bg-overlay bg-dark"></div>
+      <div class="auth-wrapper">
+        <div class="auth-sidecontent">
+          <div class="text-start px-3 px-md-5">
+            <a href="../index.html" class="d-block mt-5"><img src="../assets/images/logo-white.svg" alt="img" /></a>
+            <p class="text-white mt-2 mt-md-4"
+              >Flat Able is one of unique dashboard template which come with tons of ready to use feature.</p
+            >
+          </div>
+        </div>
+        <div class="auth-form">
+          <div class="card my-5 mx-3">
+            <div class="card-header bg-dark">
+              <h4 class="text-center text-white mb-0 f-w-500">please confirm with OTP</h4>
+            </div>
+            <div class="card-body">
+              <div class="text-center">
+                <p class="mb-3">We`ve send you code on jone. ****@company.com</p>
+              </div>
+              <div class="row my-4 text-center">
+                <div class="col">
+                  <input type="number" class="form-control text-center" placeholder="0" />
+                </div>
+                <div class="col">
+                  <input type="number" class="form-control text-center" placeholder="0" />
+                </div>
+                <div class="col">
+                  <input type="number" class="form-control text-center" placeholder="0" />
+                </div>
+                <div class="col">
+                  <input type="number" class="form-control text-center" placeholder="0" />
+                </div>
+              </div>
+              <div class="d-grid mt-4">
+                <button type="button" class="btn btn-primary">Continue</button>
+              </div>
+            </div>
+            <div class="card-footer border-top">
+              <div class="d-flex justify-content-between align-items-end">
+                <div>
+                  <h6 class="f-w-500 mb-0">Did not receive the email?</h6>
+                  <a href="#" class="link-primary">Resend code</a>
+                </div>
+                <a href="../index.html"><img src="../assets/images/logo-dark-sm.svg" alt="img" /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [ Main Content ] end -->
+    @@include('../layouts/footer-js.html') @@include('../layouts/customizer.html')
+  </body>
+  <!-- [Body] end -->
+</html>

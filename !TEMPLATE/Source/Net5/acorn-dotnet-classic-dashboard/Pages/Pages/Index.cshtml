@@ -1,0 +1,112 @@
+@page
+@{
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){};
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){};
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){};
+    ViewBag.PageScripts = PageScripts;
+
+    Dictionary<string, string> Breadcrumbs = new Dictionary<string, string>(){
+        {"/Index","Home"}
+    };
+    ViewBag.Breadcrumbs = Breadcrumbs; 
+
+    ViewBag.Title = "Pages"; 
+    ViewBag.Description = "Layouts that are focused on different project needs. Contains html blocks and specific plugins that are fit for the context.";
+}
+<div class="container">
+  <!-- Title and Top Buttons Start -->
+  <div class="page-title-container">
+    <div class="row">
+      <!-- Title Start -->
+      <div class="col-12 col-md-7">
+        <h1 class="mb-0 pb-0 display-4" id="title">@ViewBag.Title</h1>
+        <partial name="_Layout.Breadcrumb"/>
+      </div>
+      <!-- Title End -->
+    </div>
+  </div>
+  <!-- Title and Top Buttons End -->
+
+  <!-- Content Start -->
+  <div class="card mb-2">
+    <div class="card-body h-100">@ViewBag.Description</div>
+  </div>
+  <!-- Content End -->
+
+  <!-- List Items Start -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-2">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body row gx-4">
+          <div class="col-auto">
+            <i data-acorn-icon="lock-on" class="text-primary"></i>
+          </div>
+          <div class="col">
+            <a asp-page="/Pages/Authentication/Index" class="heading stretched-link d-block">Authentication</a>
+            <div class="text-muted">User verification, registration and recovery pages.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body row gx-4">
+          <div class="col-auto">
+            <i data-acorn-icon="content" class="text-primary"></i>
+          </div>
+          <div class="col">
+            <a asp-page="/Pages/Blog/Index" class="heading stretched-link d-block">Blog</a>
+            <div class="text-muted">Multiple blog pages for home, detail and listing layouts.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body row gx-4">
+          <div class="col-auto">
+            <i data-acorn-icon="layout-1" class="text-primary"></i>
+          </div>
+          <div class="col">
+            <a asp-page="/Pages/Miscellaneous/Index" class="heading stretched-link d-block">Miscellaneous</a>
+            <div class="text-muted">Various pages fit to use for error, faq, pricing and so on.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body row gx-4">
+          <div class="col-auto">
+            <i data-acorn-icon="office" class="text-primary"></i>
+          </div>
+          <div class="col">
+            <a asp-page="/Pages/Portfolio/Index" class="heading stretched-link d-block">Portfolio</a>
+            <div class="text-muted">Collection of thumbnails and detail page to showcase work.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body row gx-4">
+          <div class="col-auto">
+            <i data-acorn-icon="user" class="text-primary"></i>
+          </div>
+          <div class="col">
+            <a asp-page="/Pages/Profile/Index" class="heading stretched-link d-block">Profile</a>
+            <div class="text-muted">Layouts for settings and social aspects of a user page.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- List Items End -->
+</div>

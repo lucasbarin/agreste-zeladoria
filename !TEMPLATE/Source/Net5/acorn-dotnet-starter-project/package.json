@@ -1,0 +1,10 @@
+{
+  "name": "acorn-dotnet",
+  "version": "1.0.2",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass": "^4.1.0",
+    "rimraf": "^3.0.2"
+  }
+}

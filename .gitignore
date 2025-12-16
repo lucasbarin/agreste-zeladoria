@@ -1,0 +1,64 @@
+# Dependências
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ambiente
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Banco de dados
+*.db
+*.db-journal
+dev.db
+
+# Build
+dist/
+build/
+.next/
+out/
+
+# Cache
+.turbo/
+.cache/
+*.log
+
+# Uploads (manter estrutura mas ignorar conteúdo)
+uploads/issues/*
+uploads/profiles/*
+!uploads/issues/.gitkeep
+!uploads/profiles/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Scripts temporários
+*.ps1
+
+# Documentação temporária
+CHECKLIST.md
+STATUS.md
+FRONTEND-SETUP.md
+INSTALL.md
+instructions.txt
+test-api.txt
+
+# Capacitor
+android/
+ios/
+.capacitor/
+
+# Prisma
+backend/prisma/migrations/*
+!backend/prisma/migrations/.gitkeep

@@ -1,0 +1,86 @@
+[
+    {
+        "label": "Account > Billing",
+        "url": "/Account/Billing"
+    },
+    {
+        "label": "Account > Security",
+        "url": "/Account/Security"
+    },
+    {
+        "label": "Account > Settings",
+        "url": "/Account/Settings"
+    },
+    {
+        "label": "Dashboard > Analysis",
+        "url": "/Dashboard/Analysis"
+    },
+    {
+        "label": "Dashboard > Getting Started",
+        "url": "/Dashboard/GettingStarted"
+    },
+    {
+        "label": "Blog",
+        "url": "/Blog"
+    },
+    {
+        "label": "Community",
+        "url": "/Community"
+    },
+    {
+        "label": "Community > List",
+        "url": "/CommunityList"
+    },
+    {
+        "label": "Services > Database",
+        "url": "/Services/Database"
+    },
+    {
+        "label": "Services > Database > Add",
+        "url": "/Services/DatabaseAdd"
+    },
+    {
+        "label": "Services > Database > Detail",
+        "url": "/Services/DatabaseDetail"
+    },
+    {
+        "label": "Services > Hosting",
+        "url": "/Services/Hosting"
+    },
+    {
+        "label": "Services > Storage",
+        "url": "/Services/Storage"
+    },
+    {
+        "label": "Services > Storage > Folder",
+        "url": "/Services/StorageFolder"
+    },
+    {
+        "label": "Services > Users",
+        "url": "/Services/Users"
+    },
+    {
+        "label": "Support > Docs",
+        "url": "/Support/Docs"
+    },
+    {
+        "label": "Support > Docs > Detail",
+        "url": "/Support/DocsDetail"
+    },
+    {
+        "label": "Support > KnowledgeBase",
+        "url": "/Support/KnowledgeBase"
+    },
+    {
+        "label": "Support > Tickets",
+        "url": "/Support/Tickets"
+    },
+    {
+        "label": "Support > Tickets > Detail",
+        "url": "/Support/TicketsDetail"
+    },
+    {
+        "label": "Upgrade",
+        "url": "/Upgrade"
+    }
+]

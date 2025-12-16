@@ -1,0 +1,99 @@
+@page
+@{
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){};
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){};
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){};
+    ViewBag.PageScripts = PageScripts;
+
+    Dictionary<string, string> Breadcrumbs = new Dictionary<string, string>(){
+        {"/Index","Home"}
+    };
+    ViewBag.Breadcrumbs = Breadcrumbs; 
+
+    ViewBag.Title = "Interface"; 
+    ViewBag.Description = "User interface elements that provides control over various content and layout. They are styled in a harmony with the rest of the template.";
+}
+<div class="container">
+  <!-- Title and Top Buttons Start -->
+  <div class="page-title-container">
+    <div class="row">
+      <!-- Title Start -->
+      <div class="col-12 col-md-7">
+        <h1 class="mb-0 pb-0 display-4" id="title">@ViewBag.Title</h1>
+        <partial name="_Layout.Breadcrumb"/>
+      </div>
+      <!-- Title End -->
+    </div>
+  </div>
+  <!-- Title and Top Buttons End -->
+
+  <!-- Content Start -->
+  <div class="card mb-2">
+    <div class="card-body h-100">@ViewBag.Description</div>
+  </div>
+  <!-- Content End -->
+
+  <!-- List Items Start -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-2">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body row gx-4">
+          <div class="col-auto">
+            <i data-acorn-icon="archive" class="text-primary"></i>
+          </div>
+          <div class="col">
+            <a asp-page="/Interface/Components/Index" class="heading stretched-link d-block">Components</a>
+            <div class="text-muted">Bootstrap components styled for the template as the core of the project.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body row gx-4">
+          <div class="col-auto">
+            <i data-acorn-icon="switch-off" class="text-primary"></i>
+          </div>
+          <div class="col">
+            <a asp-page="/Interface/Forms/Index" class="heading stretched-link d-block">Forms</a>
+            <div class="text-muted">Elements, layouts, validation and plugins that are needed for the forms.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body row gx-4">
+          <div class="col-auto">
+            <i data-acorn-icon="puzzle" class="text-primary"></i>
+          </div>
+          <div class="col">
+            <a asp-page="/Interface/Plugins/Index" class="heading stretched-link d-block">Plugins</a>
+            <div class="text-muted">Various implementations of plugins that are styled for the harmony of the template.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body row gx-4">
+          <div class="col-auto">
+            <i data-acorn-icon="news" class="text-primary"></i>
+          </div>
+          <div class="col">
+            <a asp-page="/Interface/Content/Index" class="heading stretched-link d-block">Content</a>
+            <div class="text-muted">Icons, images and typography of the project, and navigation options.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- List Items End -->
+</div>

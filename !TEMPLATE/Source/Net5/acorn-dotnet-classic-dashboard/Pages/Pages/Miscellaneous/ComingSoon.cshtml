@@ -1,0 +1,54 @@
+@page
+@{
+    Layout = "_FullLayout";
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){"/js/vendor/countdown.min.js"};
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){"/js/pages/misc.comingsoon.js"};
+    ViewBag.PageScripts = PageScripts;
+
+    ViewBag.Title = "Coming Soon Page"; 
+    ViewBag.Description = "Coming Soon Page";
+}
+
+@section LeftSide {
+}
+@section RightSide {
+<div class="sw-lg-80 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border">
+<div class="sw-lg-60 px-5">
+    <div class="sh-11">
+        <a asp-page="/Index">
+            <div class="logo-default"></div>
+        </a>
+    </div>
+    <div class="mb-3">
+        <h2 class="cta-1 mb-0 text-primary">Acorn will be available soon!</h2>
+    </div>
+    <div class="mb-5 sh-9">
+        <div id="timer"></div>
+    </div>
+    <div class="mb-3">
+        <p class="h6 lh-1-5">
+            To receive our newsletter please complete the form below. We take your privacy seriously and we will not share your information with others.
+        </p>
+    </div>
+
+    <div>
+        <form>
+            <div class="mb-3 filled">
+                <i data-acorn-icon="email"></i>
+                <input class="form-control" id="password" type="password" placeholder="Email" />
+            </div>
+            <a asp-page="/Index" class="btn btn-icon btn-icon-end btn-primary">
+                <span>Submit</span>
+                <i data-acorn-icon="chevron-right"></i>
+            </a>
+        </form>
+    </div>
+</div>
+</div>
+}

@@ -1,0 +1,704 @@
+@php
+    $html_tag_data = [];
+    $title = 'Community';
+    $description= 'Service Provider Community';
+@endphp
+@extends('layout',['html_tag_data'=>$html_tag_data, 'title'=>$title, 'description'=>$description])
+
+@section('css')
+@endsection
+
+@section('js_vendor')
+@endsection
+
+@section('js_page')
+@endsection
+
+@section('content')
+    <div class="col">
+        <!-- Title and Top Buttons Start -->
+        <div class="page-title-container mb-3">
+            <div class="row">
+                <!-- Title Start -->
+                <div class="col mb-2">
+                    <h1 class="mb-2 pb-0 display-4" id="title">{{ $title }}</h1>
+                    <div class="text-muted font-heading text-small">Let us manage the database engines for your applications so you can focus on building.</div>
+                </div>
+                <!-- Title End -->
+
+                <!-- Top Buttons Start -->
+                <div class="col-12 col-sm-auto d-flex align-items-center justify-content-end">
+                    <!-- Add New Button Start -->
+                    <button type="button" class="btn btn-outline-primary btn-icon btn-icon-start w-100 w-md-auto">
+                        <i data-acorn-icon="plus"></i>
+                        <span>New Topic</span>
+                    </button>
+                    <!-- Add New Button End -->
+                </div>
+                <!-- Top Buttons End -->
+            </div>
+        </div>
+        <!-- Title and Top Buttons End -->
+
+        <div class="row">
+            <div class="col-12 col-xxl-8 mb-5 mb-xxl-0">
+                <!-- Categories Start -->
+                <div class="mb-5">
+                    <h2 class="small-title">Categories</h2>
+                    <div class="row g-2 row-cols-1 row-cols-md-2">
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="text-center mb-3">
+                                        <img src="/img/illustration/icon-storage.webp" class="theme-filter" alt="storage" />
+                                        <div class="d-flex flex-column sh-5">
+                                            <a href="/CommunityList" class="heading stretched-link">Storage</a>
+                                        </div>
+                                    </div>
+                                    <div class="row g-0 mb-n2">
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">NEW</div>
+                                            <div class="cta-2 text-primary text-center">1</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">TOPICS</div>
+                                            <div class="cta-2 text-primary text-center">13</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">USERS</div>
+                                            <div class="cta-2 text-primary text-center">89</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">UPDATED</div>
+                                            <div class="cta-2 text-primary text-center">12h</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="text-center mb-3">
+                                        <img src="/img/illustration/icon-server.webp" class="theme-filter" alt="server" />
+                                        <div class="d-flex flex-column sh-5">
+                                            <a href="/CommunityList" class="heading stretched-link">Hosting</a>
+                                        </div>
+                                    </div>
+                                    <div class="row g-0 mb-n2">
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">NEW</div>
+                                            <div class="cta-2 text-primary text-center">2</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">TOPICS</div>
+                                            <div class="cta-2 text-primary text-center">29</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">USERS</div>
+                                            <div class="cta-2 text-primary text-center">42</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">UPDATED</div>
+                                            <div class="cta-2 text-primary text-center">44m</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="text-center mb-3">
+                                        <img src="/img/illustration/icon-database.webp" class="theme-filter" alt="database" />
+                                        <div class="d-flex flex-column sh-5">
+                                            <a href="/CommunityList" class="heading stretched-link">Database</a>
+                                        </div>
+                                    </div>
+                                    <div class="row g-0 mb-n2">
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">NEW</div>
+                                            <div class="cta-2 text-primary text-center">2</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">TOPICS</div>
+                                            <div class="cta-2 text-primary text-center">16</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">USERS</div>
+                                            <div class="cta-2 text-primary text-center">61</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">UPDATED</div>
+                                            <div class="cta-2 text-primary text-center">3h</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="text-center mb-3">
+                                        <img src="/img/illustration/icon-accounts.webp" class="theme-filter" alt="accounts" />
+                                        <div class="d-flex flex-column sh-5">
+                                            <a href="/CommunityList" class="heading stretched-link">Accounts</a>
+                                        </div>
+                                    </div>
+                                    <div class="row g-0 mb-n2">
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">NEW</div>
+                                            <div class="cta-2 text-primary text-center">3</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">TOPICS</div>
+                                            <div class="cta-2 text-primary text-center">11</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">USERS</div>
+                                            <div class="cta-2 text-primary text-center">12</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">UPDATED</div>
+                                            <div class="cta-2 text-primary text-center">3d</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="text-center mb-3">
+                                        <img src="/img/illustration/icon-analytics.webp" class="theme-filter" alt="analytics" />
+                                        <div class="d-flex flex-column sh-5">
+                                            <a href="/CommunityList" class="heading stretched-link">Analytics</a>
+                                        </div>
+                                    </div>
+                                    <div class="row g-0 mb-n2">
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">NEW</div>
+                                            <div class="cta-2 text-primary text-center">5</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">TOPICS</div>
+                                            <div class="cta-2 text-primary text-center">17</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">USERS</div>
+                                            <div class="cta-2 text-primary text-center">36</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">UPDATED</div>
+                                            <div class="cta-2 text-primary text-center">2d</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="text-center mb-3">
+                                        <img src="/img/illustration/icon-support.webp" class="theme-filter" alt="support" />
+                                        <div class="d-flex flex-column sh-5">
+                                            <a href="/CommunityList" class="heading stretched-link">Support</a>
+                                        </div>
+                                    </div>
+                                    <div class="row g-0 mb-n2">
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">NEW</div>
+                                            <div class="cta-2 text-primary text-center">4</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">TOPICS</div>
+                                            <div class="cta-2 text-primary text-center">37</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">USERS</div>
+                                            <div class="cta-2 text-primary text-center">78</div>
+                                        </div>
+                                        <div class="col-6 col-sm-3 mb-2">
+                                            <div class="text-small text-muted text-center">UPDATED</div>
+                                            <div class="cta-2 text-primary text-center">21h</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Categories End -->
+
+                <!-- Popular Posts Start -->
+                <div>
+                    <h2 class="small-title">Popular Posts</h2>
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="row g-0">
+                                <div class="col-auto d-none d-sm-flex pe-4">
+                                    <div class="sw-5">
+                                        <div class="text-center mb-2">
+                                            <a href="#" class="primary-link">
+                                                <i data-acorn-icon="arrow-top"></i>
+                                            </a>
+                                        </div>
+                                        <div class="cta-2 text-alternate text-center mb-2">214</div>
+                                        <div class="text-center">
+                                            <a href="#" class="muted-link">
+                                                <i data-acorn-icon="arrow-bottom"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="position-relative mb-4">
+                                        <a href="/CommunityList" class="heading d-block body-link stretched-link mb-3">
+                                            Fruitcake chupa chups gingerbread sweet roll pie!
+                                        </a>
+                                        <p class="text-alternate mb-0">
+                                            Topping cotton candy halvah marshmallow jujubes chupa chups macaroon cookie croissant. Marshmallow tiramisu marshmallow gummi
+                                            bears dragée oat cake fruitcake dessert. Topping bonbon gingerbread chocolate apple pie cheesecake liquorice muffin pudding.
+                                        </p>
+                                    </div>
+                                    <div class="row g-0">
+                                        <div class="col-12 col-sm mb-3 mb-sm-0">
+                                            <div class="row g-0 sh-4">
+                                                <div class="col-auto pe-2">
+                                                    <img src="/img/profile/profile-4.webp" class="card-img rounded-xl sh-4 sw-4" alt="thumb" />
+                                                </div>
+                                                <div class="col d-flex align-items-center">Cherish Kerr</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-auto text">
+                                            <div class="d-inline-block me-3">
+                                                <i data-acorn-icon="eye" class="text-primary me-1" data-acorn-size="15"></i>
+                                                <span class="align-middle">239</span>
+                                            </div>
+                                            <div class="d-inline-block">
+                                                <i data-acorn-icon="message" class="text-primary me-1" data-acorn-size="15"></i>
+                                                <span class="align-middle">8</span>
+                                            </div>
+                                            <div class="d-inline-block float-end d-sm-none">
+                                                <a href="#" class="primary-link">
+                                                    <i data-acorn-icon="arrow-top" data-acorn-size="15"></i>
+                                                </a>
+                                                <span class="mx-1 align-middle">214</span>
+                                                <a href="#" class="muted-link">
+                                                    <i data-acorn-icon="arrow-bottom" data-acorn-size="15"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="row g-0">
+                                <div class="col-auto d-none d-sm-flex pe-4">
+                                    <div class="sw-5">
+                                        <div class="text-center mb-2">
+                                            <a href="#" class="muted-link">
+                                                <i data-acorn-icon="arrow-top"></i>
+                                            </a>
+                                        </div>
+                                        <div class="cta-2 text-alternate text-center mb-2">105</div>
+                                        <div class="text-center">
+                                            <a href="#" class="muted-link">
+                                                <i data-acorn-icon="arrow-bottom"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="position-relative mb-4">
+                                        <a href="/CommunityList" class="heading d-block body-link stretched-link mb-3">Caramels sesame snaps :)</a>
+                                        <img alt="detail" src="/img/product/large/product-1.webp" class="rounded img-fluid sh-50 w-100" />
+                                    </div>
+                                    <div class="row g-0">
+                                        <div class="col-12 col-sm mb-3 mb-sm-0">
+                                            <div class="row g-0 sh-4">
+                                                <div class="col-auto pe-2">
+                                                    <img src="/img/profile/profile-3.webp" class="card-img rounded-xl sh-4 sw-4" alt="thumb" />
+                                                </div>
+                                                <div class="col d-flex align-items-center">Kathryn Mengel</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-auto text">
+                                            <div class="d-inline-block me-3">
+                                                <i data-acorn-icon="eye" class="text-primary me-1" data-acorn-size="15"></i>
+                                                <span class="align-middle">114</span>
+                                            </div>
+                                            <div class="d-inline-block">
+                                                <i data-acorn-icon="message" class="text-primary me-1" data-acorn-size="15"></i>
+                                                <span class="align-middle">21</span>
+                                            </div>
+                                            <div class="d-inline-block float-end d-sm-none">
+                                                <a href="#" class="primary-link">
+                                                    <i data-acorn-icon="arrow-top" data-acorn-size="15"></i>
+                                                </a>
+                                                <span class="mx-1 align-middle">214</span>
+                                                <a href="#" class="muted-link">
+                                                    <i data-acorn-icon="arrow-bottom" data-acorn-size="15"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="row g-0">
+                                <div class="col-auto d-none d-sm-flex pe-4">
+                                    <div class="sw-5">
+                                        <div class="text-center mb-2">
+                                            <a href="#" class="muted-link">
+                                                <i data-acorn-icon="arrow-top"></i>
+                                            </a>
+                                        </div>
+                                        <div class="cta-2 text-alternate text-center mb-2">105</div>
+                                        <div class="text-center">
+                                            <a href="#" class="muted-link">
+                                                <i data-acorn-icon="arrow-bottom"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="position-relative mb-4">
+                                        <a href="/CommunityList" class="heading d-block body-link stretched-link mb-3">Marshmallow tiramisu!</a>
+                                        <p class="text-alternate mb-0">
+                                            Brownie topping apple pie pie toffee wafer cookie bonbon sweet roll. Marshmallow sugar plum chupa chups tart brownie dessert
+                                            lemon drops topping chocolate. Jelly dragée apple pie halvah jujubes. Sweet sugar plum wafer carrot cake jelly chocolate bar.
+                                            Brownie gummi bears wafer brownie. Caramels sesame snaps apple pie fruitcake cheesecake topping lemon drops gummi bears icing.
+                                        </p>
+                                    </div>
+                                    <div class="row g-0">
+                                        <div class="col-12 col-sm mb-3 mb-sm-0">
+                                            <div class="row g-0 sh-4">
+                                                <div class="col-auto pe-2">
+                                                    <img src="/img/profile/profile-3.webp" class="card-img rounded-xl sh-4 sw-4" alt="thumb" />
+                                                </div>
+                                                <div class="col d-flex align-items-center">Kathryn Mengel</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-auto text">
+                                            <div class="d-inline-block me-3">
+                                                <i data-acorn-icon="eye" class="text-primary me-1" data-acorn-size="15"></i>
+                                                <span class="align-middle">245</span>
+                                            </div>
+                                            <div class="d-inline-block">
+                                                <i data-acorn-icon="message" class="text-primary me-1" data-acorn-size="15"></i>
+                                                <span class="align-middle">12</span>
+                                            </div>
+                                            <div class="d-inline-block float-end d-sm-none">
+                                                <a href="#" class="primary-link">
+                                                    <i data-acorn-icon="arrow-top" data-acorn-size="15"></i>
+                                                </a>
+                                                <span class="mx-1 align-middle">214</span>
+                                                <a href="#" class="muted-link">
+                                                    <i data-acorn-icon="arrow-bottom" data-acorn-size="15"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="row g-0">
+                                <div class="col-auto d-none d-sm-flex pe-4">
+                                    <div class="sw-5">
+                                        <div class="text-center mb-2">
+                                            <a href="#" class="primary-link">
+                                                <i data-acorn-icon="arrow-top"></i>
+                                            </a>
+                                        </div>
+                                        <div class="cta-2 text-alternate text-center mb-2">42</div>
+                                        <div class="text-center">
+                                            <a href="#" class="muted-link">
+                                                <i data-acorn-icon="arrow-bottom"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="position-relative mb-4">
+                                        <a href="/CommunityList" class="heading d-block body-link stretched-link mb-3">Cheesecake pie dessert?</a>
+                                        <p class="text-alternate mb-0">
+                                            Marshmallow beans ice cream candy canes sugar plum chupa chups tart brownie dessert lemon drops topping chocolate. Jelly dragée
+                                            apple pie halvah jujubes.
+                                        </p>
+                                    </div>
+                                    <div class="row g-0">
+                                        <div class="col-12 col-sm mb-3 mb-sm-0">
+                                            <div class="row g-0 sh-4">
+                                                <div class="col-auto pe-2">
+                                                    <img src="/img/profile/profile-2.webp" class="card-img rounded-xl sh-4 sw-4" alt="thumb" />
+                                                </div>
+                                                <div class="col d-flex align-items-center">Esperanza Lodge</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-auto text">
+                                            <div class="d-inline-block me-3">
+                                                <i data-acorn-icon="eye" class="text-primary me-1" data-acorn-size="15"></i>
+                                                <span class="align-middle">321</span>
+                                            </div>
+                                            <div class="d-inline-block">
+                                                <i data-acorn-icon="message" class="text-primary me-1" data-acorn-size="15"></i>
+                                                <span class="align-middle">4</span>
+                                            </div>
+                                            <div class="d-inline-block float-end d-sm-none">
+                                                <a href="#" class="primary-link">
+                                                    <i data-acorn-icon="arrow-top" data-acorn-size="15"></i>
+                                                </a>
+                                                <span class="mx-1 align-middle">214</span>
+                                                <a href="#" class="muted-link">
+                                                    <i data-acorn-icon="arrow-bottom" data-acorn-size="15"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="row g-0">
+                                <div class="col-auto d-none d-sm-flex pe-4">
+                                    <div class="sw-5">
+                                        <div class="text-center mb-2">
+                                            <a href="#" class="muted-link">
+                                                <i data-acorn-icon="arrow-top"></i>
+                                            </a>
+                                        </div>
+                                        <div class="cta-2 text-alternate text-center mb-2">53</div>
+                                        <div class="text-center">
+                                            <a href="#" class="muted-link">
+                                                <i data-acorn-icon="arrow-bottom"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="position-relative mb-4">
+                                        <a href="/CommunityList" class="heading d-block body-link stretched-link mb-3">Lemon drops marzipan</a>
+                                        <p class="text-alternate mb-0">
+                                            Candy jelly beans cupcake. Jelly sesame snaps marshmallow lollipop. Brownie jelly-o carrot cake brownie lemon drops gummi bears.
+                                            Halvah pudding tootsie roll carrot cake biscuit ice cream halvah tootsie roll.
+                                        </p>
+                                    </div>
+                                    <div class="row g-0">
+                                        <div class="col-12 col-sm mb-3 mb-sm-0">
+                                            <div class="row g-0 sh-4">
+                                                <div class="col-auto pe-2">
+                                                    <img src="/img/profile/profile-7.webp" class="card-img rounded-xl sh-4 sw-4" alt="thumb" />
+                                                </div>
+                                                <div class="col d-flex align-items-center">Joisse Kaycee</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-auto text">
+                                            <div class="d-inline-block me-3">
+                                                <i data-acorn-icon="eye" class="text-primary me-1" data-acorn-size="15"></i>
+                                                <span class="align-middle">53</span>
+                                            </div>
+                                            <div class="d-inline-block">
+                                                <i data-acorn-icon="message" class="text-primary me-1" data-acorn-size="15"></i>
+                                                <span class="align-middle">17</span>
+                                            </div>
+                                            <div class="d-inline-block float-end d-sm-none">
+                                                <a href="#" class="primary-link">
+                                                    <i data-acorn-icon="arrow-top" data-acorn-size="15"></i>
+                                                </a>
+                                                <span class="mx-1 align-middle">214</span>
+                                                <a href="#" class="muted-link">
+                                                    <i data-acorn-icon="arrow-bottom" data-acorn-size="15"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center my-5">
+                        <button class="btn btn-lg btn-outline-primary">Load More</button>
+                    </div>
+                </div>
+                <!-- Popular Posts End -->
+            </div>
+
+            <div class="col-12 col-xxl-4 mb-n5">
+                <!-- Top Users Start -->
+                <h2 class="small-title">Top Users</h2>
+                <div class="card mb-5">
+                    <div class="card-body mb-n2">
+                        <div class="row g-0 sh-5 mb-2">
+                            <div class="col-auto">
+                                <img src="/img/profile/profile-1.webp" class="card-img rounded-xl sh-5 sw-5" alt="thumb" />
+                            </div>
+                            <div class="col">
+                                <div class="card-body d-flex flex-row pt-0 pb-0 ps-3 pe-0 h-100 align-items-center justify-content-between">
+                                    <div class="d-flex flex-row">
+                                        <span class="me-1">1.</span>
+                                        <span>Cherish Kerr</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-muted me-2 d-inline-block">7.8K</span>
+                                        <i data-acorn-icon="arrow-top" class="text-primary" data-acorn-size="17"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-0 sh-5 mb-2">
+                            <div class="col-auto">
+                                <img src="/img/profile/profile-9.webp" class="card-img rounded-xl sh-5 sw-5" alt="thumb" />
+                            </div>
+                            <div class="col">
+                                <div class="card-body d-flex flex-row pt-0 pb-0 ps-3 pe-0 h-100 align-items-center justify-content-between">
+                                    <div class="d-flex flex-row">
+                                        <span class="me-1">2.</span>
+                                        <span>Kirby Peters</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-muted me-2 d-inline-block">6.1K</span>
+                                        <i data-acorn-icon="arrow-top" class="text-primary" data-acorn-size="17"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-0 sh-5 mb-2">
+                            <div class="col-auto">
+                                <img src="/img/profile/profile-7.webp" class="card-img rounded-xl sh-5 sw-5" alt="thumb" />
+                            </div>
+                            <div class="col">
+                                <div class="card-body d-flex flex-row pt-0 pb-0 ps-3 pe-0 h-100 align-items-center justify-content-between">
+                                    <div class="d-flex flex-row">
+                                        <span class="me-1">3.</span>
+                                        <span>Olli Hawkins</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-muted me-2 d-inline-block">5.7K</span>
+                                        <i data-acorn-icon="arrow-top" class="text-primary" data-acorn-size="17"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-0 sh-5 mb-2">
+                            <div class="col-auto">
+                                <img src="/img/profile/profile-8.webp" class="card-img rounded-xl sh-5 sw-5" alt="thumb" />
+                            </div>
+                            <div class="col">
+                                <div class="card-body d-flex flex-row pt-0 pb-0 ps-3 pe-0 h-100 align-items-center justify-content-between">
+                                    <div class="d-flex flex-row">
+                                        <span class="me-1">4.</span>
+                                        <span>Zayn Hartley</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-muted me-2 d-inline-block">5.6K</span>
+                                        <i data-acorn-icon="arrow-top" class="text-primary" data-acorn-size="17"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-0 sh-5 mb-2">
+                            <div class="col-auto">
+                                <img src="/img/profile/profile-2.webp" class="card-img rounded-xl sh-5 sw-5" alt="thumb" />
+                            </div>
+                            <div class="col">
+                                <div class="card-body d-flex flex-row pt-0 pb-0 ps-3 pe-0 h-100 align-items-center justify-content-between">
+                                    <div class="d-flex flex-row">
+                                        <span class="me-1">5.</span>
+                                        <span>Vin Lodge</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-muted me-2 d-inline-block">5.2K</span>
+                                        <i data-acorn-icon="arrow-top" class="text-primary" data-acorn-size="17"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Top Users End -->
+
+                <!-- Popular Titles Start -->
+                <h2 class="small-title">Popular Titles</h2>
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <div class="row g-0">
+                            <div class="col-12 col-sm-6 mb-n2">
+                                <a href="#" class="body-link d-block mb-2">Anpan</a>
+                                <a href="#" class="body-link d-block mb-2">Baba</a>
+                                <a href="#" class="body-link d-block mb-2">Bagel</a>
+                                <a href="#" class="body-link d-block mb-2">Bammy</a>
+                                <a href="#" class="body-link d-block mb-2">Chapati</a>
+                                <a href="#" class="body-link d-block mb-2">Kalach</a>
+                            </div>
+                            <div class="col-12 col-sm-6 mb-n2">
+                                <a href="#" class="body-link d-block mb-2">Kulcha</a>
+                                <a href="#" class="body-link d-block mb-2">Matzo</a>
+                                <a href="#" class="body-link d-block mb-2">Mohnflesserl</a>
+                                <a href="#" class="body-link d-block mb-2">Pane Ticinese</a>
+                                <a href="#" class="body-link d-block mb-2">Rieska</a>
+                                <a href="#" class="body-link d-block mb-2">Zopf</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Popular Titles End -->
+
+                <!-- Tags Start -->
+                <h2 class="small-title">Tags</h2>
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Food (12)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Baking (3)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Sweet (1)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Molding (3)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Pastry (5)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Healthy (7)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Rye (3)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Simple (3)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Cake (2)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Recipe (6)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Bread (8)</span>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-icon-end btn-outline-primary mb-1 me-1" type="button">
+                            <span>Wheat (2)</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Tags End -->
+            </div>
+        </div>
+    </div>
+@endsection
