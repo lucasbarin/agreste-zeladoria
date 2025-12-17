@@ -164,7 +164,17 @@ export default function AdminIssueDetailPage() {
                     )}
                   </p>
                   {issue.user?.email && (
-                    <small className="text-muted">{issue.user.email}</small>
+                    <small className="text-muted d-block">{issue.user.email}</small>
+                  )}
+                  {issue.user?.whatsapp && (
+                    <div className="mt-2">
+                      <WhatsAppButton 
+                        phone={issue.user.whatsapp}
+                        message={`Olá ${issue.user.name}, sobre a ocorrência #${issue.id.substring(0, 8)} (${getTypeName(issue.type)}) registrada em ${new Date(issue.created_at).toLocaleDateString('pt-BR')}.`}
+                        className=""
+                      />
+                      <span className="ms-2 text-muted">Contatar morador</span>
+                    </div>
                   )}
                 </div>
 

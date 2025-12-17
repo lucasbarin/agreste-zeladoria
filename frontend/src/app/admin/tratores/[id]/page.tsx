@@ -198,10 +198,14 @@ export default function AdminTractorDetailPage() {
                   <p className="mb-2"><strong>{request.user.name}</strong></p>
                 </div>
                 {request.user.whatsapp && (
-                  <WhatsAppButton
-                    phone={request.user.whatsapp}
-                    message={`Olá ${request.user.name},\n\nSobre sua solicitação de trator para ${new Date(request.requested_date).toLocaleDateString('pt-BR')}:\nHoras Necessárias: ${request.hours_needed}h`}
-                  />
+                  <div>
+                    <WhatsAppButton
+                      phone={request.user.whatsapp}
+                      message={`Olá ${request.user.name}, sobre sua solicitação de trator para ${new Date(request.requested_date).toLocaleDateString('pt-BR')} (${request.hours_needed}h).`}
+                      className=""
+                    />
+                    <span className="ms-2 text-muted small">Contatar morador</span>
+                  </div>
                 )}
               </div>
               <p className="text-muted mb-2">

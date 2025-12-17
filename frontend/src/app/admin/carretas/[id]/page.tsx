@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { getCartRequestById, updateCartStatus } from '@/lib/cart';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 export default function AdminCartDetailPage() {
   const { user, loading: authLoading } = useAuth();
@@ -154,6 +155,21 @@ export default function AdminCartDetailPage() {
                 <strong>E-mail:</strong>
                 <p className="mb-0">{request.user?.email || 'N/A'}</p>
               </div>
+
+              {request.user?.whatsapp && (
+                <div className="mb-3">
+                  <strong>WhatsApp:</strong>
+                  <p className="mb-0">{request.user.whatsapp}</p>
+                  <div className="mt-2">
+                    <WhatsAppButton
+                      phone={request.user.whatsapp}
+                      message={`Olá ${request.user.name}, sobre sua solicitação de carreta para ${new Date(request.requested_date).toLocaleDateString('pt-BR')}.`}
+                      className=""
+                    />
+                    <span className="ms-2 text-muted">Contatar morador</span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
