@@ -1,187 +1,166 @@
-// Prisma Schema para Agreste Zeladoria
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-// Modelo de Usuários
 model User {
-  id                String   @id @default(uuid())
-  name              String
-  email             String   @unique
-  password_hash     String
-  role              String   // 'resident' ou 'admin'
-  status            String   @default("pendente") // 'pendente', 'ativo', 'inativo'
-  whatsapp          String?
+  id                 String            @id @default(uuid())
+  name               String
+  email              String            @unique
+  password_hash      String
+  role               String
+  status             String            @default("pendente")
   apartment_or_house String?
-  photo_url         String?
-  created_at        DateTime @default(now())
-  updated_at        DateTime @updatedAt
-
-  // Relações
-  issues Issue[]
-  cart_requests CartRequest[]
-  tractor_requests TractorRequest[]
-  chainsaw_requests ChainsawRequest[]
+  photo_url          String?
+  created_at         DateTime          @default(now())
+  updated_at         DateTime          @updatedAt
+  whatsapp           String?
+  cart_requests      CartRequest[]
+  chainsaw_requests  ChainsawRequest[]
+  issues             Issue[]
+  tractor_requests   TractorRequest[]
 
   @@map("users")
 }
 
-// Modelo de Ocorrências
 model Issue {
   id          String   @id @default(uuid())
   user_id     String
-  type        String   // 'poste_com_luz_queimada', 'buraco_na_rua', 'sujeira_ou_entulho'
+  type        String
   description String?
   latitude    Float
   longitude   Float
   photo_url   String?
-  status      String   @default("aberto") // 'aberto', 'em_andamento', 'resolvido'
+  status      String   @default("aberto")
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
+  user        User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
-  // Relações
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
-
-  @@map("issues")
   @@index([user_id])
   @@index([status])
   @@index([type])
+  @@map("issues")
 }
 
-// Modelo de Tipos de Ocorrência Personalizados
 model IssueType {
-  id          String   @id @default(uuid())
-  code        String   @unique
-  name        String
-  description String?
-  marker_color String? @default("#dc3545") // Cor do marker no mapa (hex)
-  marker_icon String?  // Ícone do marker (ex: lightbulb, water-drop, trash, etc)
-  active      Boolean  @default(true)
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
+  id           String   @id @default(uuid())
+  code         String   @unique
+  name         String
+  description  String?
+  active       Boolean  @default(true)
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  marker_color String?  @default("#dc3545")
+  marker_icon  String?
 
   @@map("issue_types")
 }
 
-// Modelo de Logs do Sistema
 model AuditLog {
   id          String   @id @default(uuid())
   user_id     String?
-  action      String   // 'create', 'update', 'delete'
-  entity_type String   // 'user', 'issue', 'issue_type'
+  action      String
+  entity_type String
   entity_id   String?
-  old_data    String?  // JSON
-  new_data    String?  // JSON
+  old_data    String?
+  new_data    String?
   ip_address  String?
   user_agent  String?
   created_at  DateTime @default(now())
 
-  @@map("audit_logs")
   @@index([user_id])
   @@index([entity_type])
   @@index([action])
   @@index([created_at])
+  @@map("audit_logs")
 }
 
-// Modelo de Solicitações de Carreta
 model CartRequest {
-  id               String   @id @default(uuid())
-  user_id          String
-  requested_date   DateTime // Data solicitada para a carreta (diária 08:00-16:00)
-  status           String   @default("pendente") // 'pendente', 'aprovado', 'rejeitado', 'concluido'
-  admin_notes      String?  // Observações do admin
-  approved_by      String?  // ID do admin que aprovou/rejeitou
-  approved_at      DateTime?
-  value            Float    // Valor cobrado (R$)
-  created_at       DateTime @default(now())
-  updated_at       DateTime @updatedAt
+  id             String    @id @default(uuid())
+  user_id        String
+  requested_date DateTime
+  status         String    @default("pendente")
+  admin_notes    String?
+  approved_by    String?
+  approved_at    DateTime?
+  value          Float
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+  user           User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
-  // Relações
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
-
+  @@index([user_id])
+  @@index([status])
+  @@index([requested_date])
   @@map("cart_requests")
-  @@index([user_id])
-  @@index([status])
-  @@index([requested_date])
 }
 
-// Modelo de Solicitações de Trator
 model TractorRequest {
-  id               String   @id @default(uuid())
-  user_id          String
-  requested_date   DateTime // Data solicitada
-  hours_needed     Int      // Quantidade de horas necessárias
-  description      String?  // Descrição do serviço
-  status           String   @default("pendente") // 'pendente', 'aprovado', 'rejeitado', 'concluido'
-  admin_notes      String?  // Observações do admin
-  approved_by      String?  // ID do admin que aprovou/rejeitou
-  approved_at      DateTime?
-  value_per_hour   Float    // Valor por hora (configurável)
-  total_value      Float    // Valor total = hours_needed * value_per_hour
-  created_at       DateTime @default(now())
-  updated_at       DateTime @updatedAt
+  id             String    @id @default(uuid())
+  user_id        String
+  requested_date DateTime
+  hours_needed   Int
+  description    String?
+  status         String    @default("pendente")
+  admin_notes    String?
+  approved_by    String?
+  approved_at    DateTime?
+  value_per_hour Float
+  total_value    Float
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+  user           User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
-  // Relações
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
-
+  @@index([user_id])
+  @@index([status])
+  @@index([requested_date])
   @@map("tractor_requests")
-  @@index([user_id])
-  @@index([status])
-  @@index([requested_date])
 }
 
-// Modelo de Solicitações de Motosserra
 model ChainsawRequest {
-  id               String   @id @default(uuid())
-  user_id          String
-  requested_date   DateTime // Data do serviço
-  description      String?  // Descrição do serviço necessário
-  status           String   @default("pendente") // 'pendente', 'em_andamento', 'cancelado', 'concluido'
-  admin_notes      String?  // Observações do admin
-  approved_by      String?  // ID do admin que processou
-  approved_at      DateTime?
-  created_at       DateTime @default(now())
-  updated_at       DateTime @updatedAt
+  id             String    @id @default(uuid())
+  user_id        String
+  requested_date DateTime
+  description    String?
+  status         String    @default("pendente")
+  admin_notes    String?
+  approved_by    String?
+  approved_at    DateTime?
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+  user           User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
-  // Relações
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
-
-  @@map("chainsaw_requests")
   @@index([user_id])
   @@index([status])
   @@index([requested_date])
+  @@map("chainsaw_requests")
 }
 
-// Modelo de Configurações do Sistema
 model SystemSetting {
-  id         String   @id @default(uuid())
-  key        String   @unique // ex: 'cart_price', 'min_hours_advance'
-  value      String   // JSON ou valor simples
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String
   description String?
-  updated_at DateTime @updatedAt
+  updated_at  DateTime @updatedAt
 
   @@map("system_settings")
 }
 
-// Modelo de Notificações
 model Notification {
-  id          String   @id @default(uuid())
-  user_id     String   // Usuário que receberá a notificação
-  type        String   // 'issue_created', 'issue_status_changed', 'cart_requested', 'cart_approved', 'cart_rejected'
-  title       String
-  message     String
-  link        String?  // Link para a página relacionada
-  read        Boolean  @default(false)
-  created_at  DateTime @default(now())
+  id         String   @id @default(uuid())
+  user_id    String
+  type       String
+  title      String
+  message    String
+  link       String?
+  read       Boolean  @default(false)
+  created_at DateTime @default(now())
 
-  @@map("notifications")
   @@index([user_id])
   @@index([read])
   @@index([created_at])
+  @@map("notifications")
 }
