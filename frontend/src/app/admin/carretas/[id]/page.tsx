@@ -156,13 +156,13 @@ export default function AdminCartDetailPage() {
                 <p className="mb-0">{request.user?.email || 'N/A'}</p>
               </div>
 
-              {request.user?.whatsapp && (
+              {(request.user as any)?.whatsapp && (
                 <div className="mb-3">
                   <strong>WhatsApp:</strong>
-                  <p className="mb-0">{request.user.whatsapp}</p>
+                  <p className="mb-0">{(request.user as any).whatsapp}</p>
                   <div className="mt-2">
                     <WhatsAppButton
-                      phone={request.user.whatsapp}
+                      phone={(request.user as any).whatsapp}
                       message={`Olá ${request.user.name}, sobre sua solicitação de carreta para ${new Date(request.requested_date).toLocaleDateString('pt-BR')}.`}
                       className=""
                     />

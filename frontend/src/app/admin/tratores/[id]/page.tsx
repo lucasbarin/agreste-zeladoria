@@ -197,10 +197,10 @@ export default function AdminTractorDetailPage() {
                 <div>
                   <p className="mb-2"><strong>{request.user.name}</strong></p>
                 </div>
-                {request.user.whatsapp && (
+                {(request.user as any).whatsapp && (
                   <div>
                     <WhatsAppButton
-                      phone={request.user.whatsapp}
+                      phone={(request.user as any).whatsapp}
                       message={`Olá ${request.user.name}, sobre sua solicitação de trator para ${new Date(request.requested_date).toLocaleDateString('pt-BR')} (${request.hours_needed}h).`}
                       className=""
                     />
@@ -212,10 +212,10 @@ export default function AdminTractorDetailPage() {
                 <i className="ph-duotone ph-envelope me-2"></i>
                 {request.user.email}
               </p>
-              {request.user.whatsapp && (
+              {(request.user as any).whatsapp && (
                 <p className="text-muted mb-2">
                   <i className="ph-duotone ph-phone me-2"></i>
-                  {request.user.whatsapp}
+                  {(request.user as any).whatsapp}
                 </p>
               )}
               {request.user.apartment_or_house && (
