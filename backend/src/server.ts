@@ -17,7 +17,7 @@ import settingsRoutes from './routes/settings.routes';
 import { startAutoCompleteScheduler } from './utils/autoComplete';
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT) || 3001;
 
 // Middlewares
 app.use(cors({
