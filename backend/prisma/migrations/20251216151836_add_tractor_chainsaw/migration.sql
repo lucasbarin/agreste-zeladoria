@@ -48,5 +48,3 @@ CREATE INDEX "chainsaw_requests_status_idx" ON "chainsaw_requests"("status");
 
 -- CreateIndex
 CREATE INDEX "chainsaw_requests_requested_date_idx" ON "chainsaw_requests"("requested_date");
-
-

@@ -1,6 +1,6 @@
 -- RedefineTables
-PRAGMA defer_foreign_keys=ON;
-PRAGMA foreign_keys=OFF;
+
+
 CREATE TABLE "new_chainsaw_requests" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "user_id" TEXT NOT NULL,
@@ -44,7 +44,3 @@ ALTER TABLE "new_tractor_requests" RENAME TO "tractor_requests";
 CREATE INDEX "tractor_requests_user_id_idx" ON "tractor_requests"("user_id");
 CREATE INDEX "tractor_requests_status_idx" ON "tractor_requests"("status");
 CREATE INDEX "tractor_requests_requested_date_idx" ON "tractor_requests"("requested_date");
-PRAGMA foreign_keys=ON;
-PRAGMA defer_foreign_keys=OFF;
-
-

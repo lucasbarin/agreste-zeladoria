@@ -55,5 +55,3 @@ CREATE INDEX "notifications_read_idx" ON "notifications"("read");
 
 -- CreateIndex
 CREATE INDEX "notifications_created_at_idx" ON "notifications"("created_at");
-
-

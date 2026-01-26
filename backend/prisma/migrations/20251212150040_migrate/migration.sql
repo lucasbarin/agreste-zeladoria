@@ -36,5 +36,3 @@ CREATE INDEX "issues_status_idx" ON "issues"("status");
 
 -- CreateIndex
 CREATE INDEX "issues_type_idx" ON "issues"("type");
-
-
