@@ -10,8 +10,8 @@ CREATE TABLE "new_users" (
     "status" TEXT NOT NULL DEFAULT 'pendente',
     "apartment_or_house" TEXT,
     "photo_url" TEXT,
-    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" DATETIME NOT NULL
+    "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP NOT NULL
 );
 INSERT INTO "new_users" ("apartment_or_house", "created_at", "email", "id", "name", "password_hash", "photo_url", "role", "updated_at") SELECT "apartment_or_house", "created_at", "email", "id", "name", "password_hash", "photo_url", "role", "updated_at" FROM "users";
 DROP TABLE "users";
@@ -19,3 +19,5 @@ ALTER TABLE "new_users" RENAME TO "users";
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 PRAGMA foreign_keys=ON;
 PRAGMA defer_foreign_keys=OFF;
+
+

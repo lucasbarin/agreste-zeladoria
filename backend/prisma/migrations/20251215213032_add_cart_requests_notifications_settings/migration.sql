@@ -2,15 +2,15 @@
 CREATE TABLE "cart_requests" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "user_id" TEXT NOT NULL,
-    "requested_date" DATETIME NOT NULL,
+    "requested_date" TIMESTAMP NOT NULL,
     "period" TEXT NOT NULL,
     "status" TEXT NOT NULL DEFAULT 'pendente',
     "admin_notes" TEXT,
     "approved_by" TEXT,
-    "approved_at" DATETIME,
-    "value" REAL NOT NULL,
-    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" DATETIME NOT NULL,
+    "approved_at" TIMESTAMP,
+    "value" DOUBLE PRECISION NOT NULL,
+    "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP NOT NULL,
     CONSTRAINT "cart_requests_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -20,7 +20,7 @@ CREATE TABLE "system_settings" (
     "key" TEXT NOT NULL,
     "value" TEXT NOT NULL,
     "description" TEXT,
-    "updated_at" DATETIME NOT NULL
+    "updated_at" TIMESTAMP NOT NULL
 );
 
 -- CreateTable
@@ -32,7 +32,7 @@ CREATE TABLE "notifications" (
     "message" TEXT NOT NULL,
     "link" TEXT,
     "read" BOOLEAN NOT NULL DEFAULT false,
-    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- CreateIndex
@@ -55,3 +55,5 @@ CREATE INDEX "notifications_read_idx" ON "notifications"("read");
 
 -- CreateIndex
 CREATE INDEX "notifications_created_at_idx" ON "notifications"("created_at");
+
+
