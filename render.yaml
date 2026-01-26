@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: agreste-backend
+    env: node
+    root: ./backend
+    buildCommand: npm install && npx prisma generate && npm run build && npx prisma migrate deploy
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
