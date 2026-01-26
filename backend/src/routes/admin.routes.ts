@@ -149,7 +149,7 @@ router.post('/users', isAdmin, async (req, res) => {
     });
 
     await createAuditLog(
-      (req.user as any)?.id,
+      (req.user as any)?.id || req.user?.userId,
       'create',
       'user',
       newUser.id,
