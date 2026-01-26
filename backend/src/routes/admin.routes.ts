@@ -149,7 +149,7 @@ router.post('/users', isAdmin, async (req, res) => {
     });
 
     await createAuditLog(
-      req.user?.id,
+      (req.user as any)?.id,
       'create',
       'user',
       newUser.id,
@@ -568,7 +568,7 @@ router.post('/issues', isAdmin, upload.single('photo'), async (req, res) => {
     // Criar ocorrência (se não tiver user_id, usa o ID do admin)
     const issue = await prisma.issue.create({
       data: {
-        user_id: user_id || req.user.userId, // Admin como responsável se não especificado
+        user_id: user_id || req.user!.userId, // Admin como responsável se não especificado
         type,
         description: description || null,
         latitude: parseFloat(latitude),

@@ -75,7 +75,7 @@ export class AuthController {
         },
         secret,
         {
-          expiresIn: (process.env.JWT_EXPIRES_IN || '7d') as string,
+          expiresIn: process.env.JWT_EXPIRES_IN || '7d',
         }
       );
 
@@ -146,7 +146,7 @@ export class AuthController {
         },
         secret,
         {
-          expiresIn: (process.env.JWT_EXPIRES_IN || '7d') as string,
+          expiresIn: process.env.JWT_EXPIRES_IN || '7d',
         }
       );
 
