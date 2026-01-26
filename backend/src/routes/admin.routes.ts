@@ -193,7 +193,7 @@ router.put('/users/:id', isAdmin, async (req, res) => {
     });
 
     await createAuditLog(
-      req.user?.id,
+      (req.user as any)?.id || req.user?.userId,
       'update',
       'user',
       id,
@@ -239,7 +239,7 @@ router.patch('/users/:id/status', isAdmin, async (req, res) => {
     });
 
     await createAuditLog(
-      req.user?.id,
+      (req.user as any)?.id || req.user?.userId,
       'update',
       'user_status',
       id,
@@ -285,7 +285,7 @@ router.post('/users/:id/reset-password', isAdmin, async (req, res) => {
     });
 
     await createAuditLog(
-      req.user?.id,
+      (req.user as any)?.id || req.user?.userId,
       'update',
       'user',
       id,
@@ -334,7 +334,7 @@ router.post('/issue-types', isAdmin, async (req, res) => {
     });
 
     await createAuditLog(
-      req.user?.id,
+      (req.user as any)?.id || req.user?.userId,
       'create',
       'issue_type',
       type.id,
@@ -369,7 +369,7 @@ router.put('/issue-types/:id', isAdmin, async (req, res) => {
     });
 
     await createAuditLog(
-      req.user?.id,
+      (req.user as any)?.id || req.user?.userId,
       'update',
       'issue_type',
       id,
@@ -400,7 +400,7 @@ router.delete('/issue-types/:id', isAdmin, async (req, res) => {
     await prisma.issueType.delete({ where: { id } });
 
     await createAuditLog(
-      req.user?.id,
+      (req.user as any)?.id || req.user?.userId,
       'delete',
       'issue_type',
       id,
@@ -433,7 +433,7 @@ router.delete('/issues/:id', isAdmin, async (req, res) => {
     await prisma.issue.delete({ where: { id } });
 
     await createAuditLog(
-      req.user?.id,
+      (req.user as any)?.id || req.user?.userId,
       'delete',
       'issue',
       id,
