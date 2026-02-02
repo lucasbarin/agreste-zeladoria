@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 
 // Rotas
 import authRoutes from './routes/auth.routes';
@@ -18,6 +19,17 @@ import { startAutoCompleteScheduler } from './utils/autoComplete';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
+
+// Criar diretórios de upload se não existirem
+const uploadsDir = path.join(__dirname, '../uploads');
+const issuesDir = path.join(uploadsDir, 'issues');
+const profilesDir = path.join(uploadsDir, 'profiles');
+
+[uploadsDir, issuesDir, profilesDir].forEach(dir => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+});
 
 // Middlewares
 app.use(cors({
