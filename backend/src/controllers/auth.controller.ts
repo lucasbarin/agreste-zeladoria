@@ -56,12 +56,26 @@ export class AuthController {
           name: true,
           email: true,
           role: true,
+          status: true,
           apartment_or_house: true,
           created_at: true,
         },
       });
 
-      // Gerar token JWT
+      // Se usuário estiver pendente, retornar sem token
+      if (user.status === 'pendente') {
+        res.status(201).json({
+          message: 'Cadastro realizado com sucesso! Aguarde a aprovação do administrador.',
+          user: {
+            name: user.name,
+            email: user.email,
+          },
+          pendingApproval: true,
+        });
+        return;
+      }
+
+      // Gerar token JWT apenas para usuários ativos
       const secret = process.env.JWT_SECRET;
       if (!secret) {
         throw new Error('JWT_SECRET não configurado');

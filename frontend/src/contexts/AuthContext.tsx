@@ -53,13 +53,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const register = async (data: any) => {
     try {
       const response = await authService.register(data);
-      setUser(response.user);
       
-      // Redirecionar baseado no role
-      if (response.user.role === 'admin') {
-        router.push('/admin/dashboard');
-      } else {
-        router.push('/morador/dashboard');
+      // Se retornou pendingApproval, não fazer login automático
+      if ((response as any).pendingApproval) {
+        router.push('/login?registered=true');
+        return;
+      }
+      
+      // Apenas fazer login se retornou token
+      if (response.token && response.user) {
+        setUser(response.user);
+        
+        // Redirecionar baseado no role
+        if (response.user.role === 'admin') {
+          router.push('/admin/dashboard');
+        } else {
+          router.push('/morador/dashboard');
+        }
       }
     } catch (error: any) {
       throw new Error(error.response?.data?.error || 'Erro ao criar conta');
