@@ -23,8 +23,8 @@ export default function NovaOcorrenciaPage() {
   const [formData, setFormData] = useState({
     type: 'poste_com_luz_queimada' as IssueType,
     description: '',
-    latitude: -8.05428, // Coordenadas padrão (pode ajustar para sua região)
-    longitude: -35.00128,
+    latitude: -22.17496021078111, // Portaria do Residencial Recanto do Agreste
+    longitude: -46.77342106771189,
   });
 
   const [photo, setPhoto] = useState<File | null>(null);
