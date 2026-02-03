@@ -103,11 +103,25 @@ export default function AdminIssueDetailPage() {
     }
   };
 
-  if (authLoading || loading) {
+  console.log('🎨 [IssueDetail] Rendering decision:', { authLoading, loading, hasIssue: !!issue, hasError: !!error });
+
+  if (authLoading) {
+    console.log('⏳ [IssueDetail] Mostrando loading (authLoading=true)');
     return (
       <div className="text-center py-5">
         <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Carregando...</span>
+          <span className="visually-hidden">Autenticando...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (loading) {
+    console.log('⏳ [IssueDetail] Mostrando loading (loading=true)');
+    return (
+      <div className="text-center py-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Carregando ocorrência...</span>
         </div>
       </div>
     );
