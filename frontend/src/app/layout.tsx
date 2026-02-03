@@ -36,7 +36,8 @@ export default function RootLayout({
         <Script src="/assets/js/plugins/popper.min.js" strategy="beforeInteractive" />
         <Script src="/assets/js/plugins/simplebar.min.js" strategy="beforeInteractive" />
         <Script src="/assets/js/plugins/bootstrap.min.js" strategy="beforeInteractive" />
-        <Script src="/assets/js/fonts/custom-font.js" strategy="afterInteractive" />
+        {/* TEMPORARIAMENTE DESABILITADO - estava causando loop infinito */}
+        {/* <Script src="/assets/js/fonts/custom-font.js" strategy="afterInteractive" /> */}
         <Script src="/assets/js/plugins/feather.min.js" strategy="afterInteractive" />
       </body>
     </html>
