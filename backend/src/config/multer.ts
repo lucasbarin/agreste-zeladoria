@@ -14,11 +14,14 @@ cloudinary.config({
 // Configuração de armazenamento no Cloudinary
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: {
-    folder: 'agreste-zeladoria/issues',
-    allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
-    transformation: [{ width: 1200, height: 1200, crop: 'limit' }],
-  } as any,
+  params: async (req, file) => {
+    return {
+      folder: 'agreste-zeladoria/issues',
+      allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
+      transformation: [{ width: 1200, height: 1200, crop: 'limit' }],
+      public_id: `issue-${Date.now()}-${Math.round(Math.random() * 1E9)}`,
+    };
+  },
 });
 
 // Filtro de tipos de arquivo
