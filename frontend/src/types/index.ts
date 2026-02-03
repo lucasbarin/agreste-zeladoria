@@ -16,6 +16,7 @@ export interface User {
   status?: UserStatus;
   whatsapp?: string;
   apartment_or_house?: string;
+  photo_url?: string;
   created_at: string;
 }
 
