@@ -100,8 +100,10 @@ export default function ConfiguracoesPage() {
       }
 
       const data = await response.json();
-      setAppIcon(data.url);
+      setAppIcon(data.iconUrl);
       alert('Ícone do app atualizado com sucesso!');
+      // Recarregar settings para atualizar o valor
+      loadSettings();
     } catch (error) {
       console.error('Erro ao fazer upload:', error);
       alert('Erro ao fazer upload do ícone');
