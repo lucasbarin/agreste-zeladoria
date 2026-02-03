@@ -30,14 +30,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       if (storedUser && token) {
         try {
-          // Validar se o token ainda é válido
+          // Validar se o token ainda é válido (com timeout de 10s)
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 10000);
+          
           const validUser = await authService.me();
+          clearTimeout(timeoutId);
           setUser(validUser);
-        } catch (error) {
-          // Token inválido ou expirado - fazer logout
-          console.log('Token expirado ou inválido, fazendo logout...');
-          authService.logout();
-          setUser(null);
+        } catch (error: any) {
+          // Se for timeout ou erro de rede, manter usuário logado
+          if (error.name === 'AbortError' || error.code === 'ECONNABORTED' || !navigator.onLine) {
+            console.log('Erro de rede ou timeout, mantendo usuário logado localmente');
+            setUser(storedUser);
+          } else {
+            // Token inválido ou expirado - fazer logout
+            console.log('Token expirado ou inválido, fazendo logout...');
+            authService.logout();
+            setUser(null);
+          }
         }
       }
       setLoading(false);

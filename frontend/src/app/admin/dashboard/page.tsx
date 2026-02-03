@@ -61,9 +61,9 @@ export default function AdminDashboard() {
     try {
       setLoadingRequests(true);
       const [cartRes, tractorRes, chainsawRes] = await Promise.all([
-        api.get('/api/cart'),
-        api.get('/api/tractor'),
-        api.get('/api/chainsaw')
+        api.get('/api/cart').catch(err => ({ data: [] })),
+        api.get('/api/tractor').catch(err => ({ data: [] })),
+        api.get('/api/chainsaw').catch(err => ({ data: [] }))
       ]);
 
       const cartRequests = (cartRes.data || [])
@@ -126,6 +126,9 @@ export default function AdminDashboard() {
       setStats({ aberto, em_andamento, resolvido, total: data.length });
     } catch (error) {
       console.error('Erro ao carregar ocorrências:', error);
+      // Mesmo com erro, definir dados vazios
+      setIssues([]);
+      setStats({ aberto: 0, em_andamento: 0, resolvido: 0, total: 0 });
     } finally {
       setLoadingIssues(false);
     }

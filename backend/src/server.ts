@@ -53,6 +53,15 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Health check também em /api/health para o frontend
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    message: 'Agreste Zeladoria API está rodando',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Rotas da API
 app.use('/api/auth', authRoutes);
 app.use('/api/issues', issueRoutes);

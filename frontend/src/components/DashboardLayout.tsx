@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { listNotifications, markNotificationAsRead, markAllNotificationsAsRead, getUnreadNotificationCount, Notification } from '@/lib/notifications';
+import NetworkStatus from './NetworkStatus';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -448,6 +449,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           {children}
         </div>
       </div>
+
+      {/* Indicador de status de rede */}
+      <NetworkStatus />
     </>
   );
 }
