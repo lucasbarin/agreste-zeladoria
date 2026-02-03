@@ -180,6 +180,9 @@ export default function AdminDashboard() {
       };
     });
   }, [issues, issueTypes]); // Recalcular apenas quando issues ou issueTypes mudarem
+
+  return (
+    <>
       {/* Page Header */}
       <div className="page-header">
         <div className="page-block">
