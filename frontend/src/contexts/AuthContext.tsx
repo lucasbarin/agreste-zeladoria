@@ -22,10 +22,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const loadedRef = useRef(false);
+  const renderCountRef = useRef(0);
+
+  renderCountRef.current++;
+  console.log(`🔄 [AuthContext] RENDER #${renderCountRef.current}`, { user: user?.email, loading });
 
   useEffect(() => {
+    console.log('🚀 [AuthContext] useEffect triggered');
     // Prevenir múltiplas execuções
-    if (loadedRef.current) return;
+    if (loadedRef.current) {
+      console.log('⏸️ [AuthContext] Já inicializado, ignorando');
+      return;
+    }
+    console.log('✅ [AuthContext] Inicializando pela primeira vez...');
     loadedRef.current = true;
     
     // Carregar usuário do localStorage e validar token
@@ -41,11 +50,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           
           const validUser = await authService.me();
           clearTimeout(timeoutId);
+          console.log('✅ [AuthContext] Token válido, setando user:', validUser.email);
           setUser(validUser);
         } catch (error: any) {
           // Se for timeout ou erro de rede, manter usuário logado
           if (error.name === 'AbortError' || error.code === 'ECONNABORTED' || !navigator.onLine) {
-            console.log('Erro de rede ou timeout, mantendo usuário logado localmente');
+            console.log('⚠️ [AuthContext] Erro de rede, mantendo user local:', storedUser.email);
             setUser(storedUser);
           } else {
             // Token inválido ou expirado - fazer logout
