@@ -185,7 +185,7 @@ export default function PerfilPage() {
               <div className="position-relative d-inline-block mb-3">
                 {profile.photo_url ? (
                   <img
-                    src={`http://localhost:3001${profile.photo_url}`}
+                    src={profile.photo_url.startsWith('http') ? profile.photo_url : `${process.env.NEXT_PUBLIC_API_URL}${profile.photo_url}`}
                     alt="Foto de perfil"
                     className="rounded-circle"
                     style={{ width: '150px', height: '150px', objectFit: 'cover' }}
