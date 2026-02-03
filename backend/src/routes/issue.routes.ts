@@ -10,9 +10,9 @@ router.use(authMiddleware);
 
 // Criar nova ocorrência (com upload de foto opcional)
 router.post('/', upload.single('photo'), async (req, res) => {
-  // Se houver arquivo, adicionar URL ao body
+  // Se houver arquivo, adicionar URL do Cloudinary ao body
   if (req.file) {
-    req.body.photo_url = `/uploads/issues/${req.file.filename}`;
+    req.body.photo_url = (req.file as any).path; // Cloudinary retorna a URL em 'path'
   }
   await IssueController.create(req, res);
 });
