@@ -289,15 +289,19 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               </li>
               {menuItems.map((item) => (
                 <li key={item.href} className="pc-item">
-                  <Link 
-                    href={item.href} 
+                  <a 
+                    href={item.href}
                     className="pc-link"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      router.push(item.href);
+                    }}
                   >
                     <span className="pc-micon">
                       <i className={`ph-duotone ${item.icon}`}></i>
                     </span>
                     <span className="pc-mtext">{item.label}</span>
-                  </Link>
+                  </a>
                 </li>
               ))}
               <li className="pc-item">
