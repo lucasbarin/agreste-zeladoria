@@ -225,7 +225,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       
       <nav className="pc-sidebar">
         <div className="navbar-wrapper">
-          <div className="m-header">
+          <div className="m-header" style={{ paddingTop: '1.5rem' }}>
             <Link href={isAdmin ? '/admin/dashboard' : '/morador/dashboard'} className="b-brand text-primary">
               <img src="/logo.png" alt="Agreste Zeladoria" className="logo-lg" style={{ maxHeight: '40px' }} />
             </Link>
@@ -234,9 +234,18 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <div className="card pc-user-card">
             <div className="card-body">
               <div className="nav-user-image">
-                <div className="user-avtar rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
-                  {user.name.charAt(0).toUpperCase()}
-                </div>
+                {user.photo_url ? (
+                  <img 
+                    src={user.photo_url.startsWith('http') ? user.photo_url : `${process.env.NEXT_PUBLIC_API_URL}${user.photo_url}`}
+                    alt={user.name}
+                    className="rounded-circle"
+                    style={{ width: '40px', height: '40px', objectFit: 'cover' }}
+                  />
+                ) : (
+                  <div className="user-avtar rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                )}
               </div>
               <div className="mt-3">
                 <h6 className="mb-0 text-white">{user.name}</h6>

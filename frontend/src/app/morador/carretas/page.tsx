@@ -86,16 +86,14 @@ export default function CarretasPage() {
       <div className="row">
         <div className="col-sm-12">
           <div className="card">
-            <div className="card-header">
-              <h5>Nova Solicitação</h5>
-              <div className="card-header-right">
-                <button
-                  onClick={() => router.push('/morador/carretas/nova')}
-                  className="btn btn-primary btn-sm"
-                >
-                  <i className="feather icon-plus"></i> Solicitar Carreta
-                </button>
-              </div>
+            <div className="card-header d-flex justify-content-between align-items-center flex-wrap">
+              <h5 className="mb-0">Nova Solicitação</h5>
+              <button
+                onClick={() => router.push('/morador/carretas/nova')}
+                className="btn btn-primary btn-sm mt-2 mt-md-0"
+              >
+                <i className="feather icon-plus"></i> Solicitar Carreta
+              </button>
             </div>
             <div className="card-body">
               <div className="alert alert-info">
