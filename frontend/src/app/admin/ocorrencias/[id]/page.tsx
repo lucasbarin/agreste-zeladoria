@@ -224,12 +224,14 @@ export default function AdminIssueDetailPage() {
                   )}
                   {issue.user?.whatsapp && (
                     <div className="mt-2">
-                      <WhatsAppButton 
+                      {/* TEMPORARIAMENTE DESABILITADO PARA DEBUG */}
+                      {/* <WhatsAppButton 
                         phone={issue.user.whatsapp}
                         message={`Olá ${issue.user.name}, sobre a ocorrência #${issue.id.substring(0, 8)} (${getTypeName(issue.type)}) registrada em ${new Date(issue.created_at).toLocaleDateString('pt-BR')}.`}
                         className=""
-                      />
-                      <span className="ms-2 text-muted">Contatar morador</span>
+                      /> */}
+                      <span className="badge bg-success">{issue.user.whatsapp}</span>
+                      <span className="ms-2 text-muted">WhatsApp disponível</span>
                     </div>
                   )}
                 </div>
@@ -256,12 +258,19 @@ export default function AdminIssueDetailPage() {
               <div className="card-body">
                 <h5 className="card-title">Localização</h5>
                 <hr />
-                <LeafletMap
+                {/* TEMPORARIAMENTE DESABILITADO PARA DEBUG */}
+                {/* <LeafletMap
                   center={[issue.latitude, issue.longitude]}
                   zoom={16}
                   markers={markers}
                   height="300px"
-                />
+                /> */}
+                <div className="bg-secondary rounded d-flex align-items-center justify-content-center" style={{ height: '300px' }}>
+                  <div className="text-center text-white">
+                    <i className="ph-duotone ph-map-pin f-32"></i>
+                    <p className="mt-2">Mapa desabilitado temporariamente para debug</p>
+                  </div>
+                </div>
                 <p className="text-muted mt-2 mb-0 small">
                   Lat: {issue.latitude.toFixed(6)}, Lng: {issue.longitude.toFixed(6)}
                 </p>
