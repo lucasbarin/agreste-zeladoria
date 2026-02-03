@@ -224,14 +224,14 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       {/* Loader removido - causava conflito DOM com React durante navegação */}
       
       <nav className="pc-sidebar">
-        <div className="navbar-wrapper">
-          <div className="m-header" style={{ paddingTop: '1.5rem' }}>
+        <div className="navbar-wrapper" style={{ paddingTop: 'max(env(safe-area-inset-top), 20px)' }}>
+          <div className="m-header" style={{ paddingTop: '2.5rem', paddingBottom: '1rem' }}>
             <Link href={isAdmin ? '/admin/dashboard' : '/morador/dashboard'} className="b-brand text-primary">
               <img src="/logo.png" alt="Agreste Zeladoria" className="logo-lg" style={{ maxHeight: '40px' }} />
             </Link>
           </div>
 
-          <div className="card pc-user-card">
+          <div className="card pc-user-card" style={{ marginTop: '1rem' }}>
             <div className="card-body">
               <div className="nav-user-image">
                 {user.photo_url ? (
