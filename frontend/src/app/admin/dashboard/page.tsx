@@ -188,112 +188,120 @@ export default function AdminDashboard() {
       {/* Statistics Cards */}
       <div className="row">
         <div className="col-md-6 col-xl-3">
-          <div className="card bg-primary-dark">
-            <div className="card-body">
-              <div className="d-flex align-items-center">
-                <div className="flex-shrink-0">
-                  <div className="avtar avtar-s bg-light-primary">
-                    <i className="ph-duotone ph-list f-20"></i>
+          <a href="/admin/ocorrencias" className="text-decoration-none">
+            <div className="card bg-primary-dark" style={{ cursor: 'pointer', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+              <div className="card-body">
+                <div className="d-flex align-items-center">
+                  <div className="flex-shrink-0">
+                    <div className="avtar avtar-s bg-light-primary">
+                      <i className="ph-duotone ph-list f-20"></i>
+                    </div>
+                  </div>
+                  <div className="flex-grow-1 ms-3">
+                    <h6 className="mb-0 text-white">Total</h6>
                   </div>
                 </div>
-                <div className="flex-grow-1 ms-3">
-                  <h6 className="mb-0 text-white">Total</h6>
-                </div>
-              </div>
-              <div className="bg-body p-3 mt-3 rounded">
-                <div className="mt-3 row align-items-center">
-                  <div className="col-7">
-                    <h3 className="mb-1">{stats.total}</h3>
-                    <p className="text-muted mb-0 text-sm">Ocorrências</p>
-                  </div>
-                  <div className="col-5 text-end">
-                    <i className="ph-duotone ph-list f-32"></i>
+                <div className="bg-body p-3 mt-3 rounded">
+                  <div className="mt-3 row align-items-center">
+                    <div className="col-7">
+                      <h3 className="mb-1">{stats.total}</h3>
+                      <p className="text-muted mb-0 text-sm">Ocorrências</p>
+                    </div>
+                    <div className="col-5 text-end">
+                      <i className="ph-duotone ph-list f-32"></i>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
         <div className="col-md-6 col-xl-3">
-          <div className="card bg-danger-dark">
-            <div className="card-body">
-              <div className="d-flex align-items-center">
-                <div className="flex-shrink-0">
-                  <div className="avtar avtar-s bg-light-danger">
-                    <i className="ph-duotone ph-warning f-20"></i>
+          <a href="/admin/ocorrencias?status=aberto" className="text-decoration-none">
+            <div className="card bg-danger-dark" style={{ cursor: 'pointer', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+              <div className="card-body">
+                <div className="d-flex align-items-center">
+                  <div className="flex-shrink-0">
+                    <div className="avtar avtar-s bg-light-danger">
+                      <i className="ph-duotone ph-warning f-20"></i>
+                    </div>
+                  </div>
+                  <div className="flex-grow-1 ms-3">
+                    <h6 className="mb-0 text-white">Abertas</h6>
                   </div>
                 </div>
-                <div className="flex-grow-1 ms-3">
-                  <h6 className="mb-0 text-white">Abertas</h6>
-                </div>
-              </div>
-              <div className="bg-body p-3 mt-3 rounded">
-                <div className="mt-3 row align-items-center">
-                  <div className="col-7">
-                    <h3 className="mb-1">{stats.aberto}</h3>
-                    <p className="text-muted mb-0 text-sm">Aguardando</p>
-                  </div>
-                  <div className="col-5 text-end">
-                    <i className="ph-duotone ph-warning f-32 text-danger"></i>
+                <div className="bg-body p-3 mt-3 rounded">
+                  <div className="mt-3 row align-items-center">
+                    <div className="col-7">
+                      <h3 className="mb-1">{stats.aberto}</h3>
+                      <p className="text-muted mb-0 text-sm">Aguardando</p>
+                    </div>
+                    <div className="col-5 text-end">
+                      <i className="ph-duotone ph-warning f-32 text-danger"></i>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
         <div className="col-md-6 col-xl-3">
-          <div className="card bg-warning-dark">
-            <div className="card-body">
-              <div className="d-flex align-items-center">
-                <div className="flex-shrink-0">
-                  <div className="avtar avtar-s bg-light-warning">
-                    <i className="ph-duotone ph-clock f-20"></i>
+          <a href="/admin/ocorrencias?status=em_andamento" className="text-decoration-none">
+            <div className="card bg-warning-dark" style={{ cursor: 'pointer', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+              <div className="card-body">
+                <div className="d-flex align-items-center">
+                  <div className="flex-shrink-0">
+                    <div className="avtar avtar-s bg-light-warning">
+                      <i className="ph-duotone ph-clock f-20"></i>
+                    </div>
+                  </div>
+                  <div className="flex-grow-1 ms-3">
+                    <h6 className="mb-0 text-white">Em Andamento</h6>
                   </div>
                 </div>
-                <div className="flex-grow-1 ms-3">
-                  <h6 className="mb-0 text-white">Em Andamento</h6>
-                </div>
-              </div>
-              <div className="bg-body p-3 mt-3 rounded">
-                <div className="mt-3 row align-items-center">
-                  <div className="col-7">
-                    <h3 className="mb-1">{stats.em_andamento}</h3>
-                    <p className="text-muted mb-0 text-sm">Em Progresso</p>
-                  </div>
-                  <div className="col-5 text-end">
-                    <i className="ph-duotone ph-clock f-32 text-warning"></i>
+                <div className="bg-body p-3 mt-3 rounded">
+                  <div className="mt-3 row align-items-center">
+                    <div className="col-7">
+                      <h3 className="mb-1">{stats.em_andamento}</h3>
+                      <p className="text-muted mb-0 text-sm">Em Progresso</p>
+                    </div>
+                    <div className="col-5 text-end">
+                      <i className="ph-duotone ph-clock f-32 text-warning"></i>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
         <div className="col-md-6 col-xl-3">
-          <div className="card bg-success-dark">
-            <div className="card-body">
-              <div className="d-flex align-items-center">
-                <div className="flex-shrink-0">
-                  <div className="avtar avtar-s bg-light-success">
-                    <i className="ph-duotone ph-check-circle f-20"></i>
+          <a href="/admin/ocorrencias?status=resolvido" className="text-decoration-none">
+            <div className="card bg-success-dark" style={{ cursor: 'pointer', transition: 'transform 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+              <div className="card-body">
+                <div className="d-flex align-items-center">
+                  <div className="flex-shrink-0">
+                    <div className="avtar avtar-s bg-light-success">
+                      <i className="ph-duotone ph-check-circle f-20"></i>
+                    </div>
+                  </div>
+                  <div className="flex-grow-1 ms-3">
+                    <h6 className="mb-0 text-white">Resolvidas</h6>
                   </div>
                 </div>
-                <div className="flex-grow-1 ms-3">
-                  <h6 className="mb-0 text-white">Resolvidas</h6>
-                </div>
-              </div>
-              <div className="bg-body p-3 mt-3 rounded">
-                <div className="mt-3 row align-items-center">
-                  <div className="col-7">
-                    <h3 className="mb-1">{stats.resolvido}</h3>
-                    <p className="text-muted mb-0 text-sm">Completas</p>
-                  </div>
-                  <div className="col-5 text-end">
-                    <i className="ph-duotone ph-check-circle f-32 text-success"></i>
+                <div className="bg-body p-3 mt-3 rounded">
+                  <div className="mt-3 row align-items-center">
+                    <div className="col-7">
+                      <h3 className="mb-1">{stats.resolvido}</h3>
+                      <p className="text-muted mb-0 text-sm">Completas</p>
+                    </div>
+                    <div className="col-5 text-end">
+                      <i className="ph-duotone ph-check-circle f-32 text-success"></i>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -425,11 +433,12 @@ export default function AdminDashboard() {
                         <th>Descrição</th>
                         <th>Status</th>
                         <th>Data</th>
+                        <th>Ações</th>
                       </tr>
                     </thead>
                     <tbody>
                       {issues.slice(0, 10).map((issue) => (
-                        <tr key={issue.id}>
+                        <tr key={issue.id} style={{ cursor: 'pointer' }} onClick={() => router.push(`/admin/ocorrencias/${issue.id}`)}>
                           <td>
                             <i className="ph-duotone ph-warning-circle me-2"></i>
                             {getTypeName(issue.type)}
@@ -443,6 +452,16 @@ export default function AdminDashboard() {
                           <td>
                             <i className="ph-duotone ph-calendar me-2"></i>
                             {new Date(issue.created_at).toLocaleDateString('pt-BR')}
+                          </td>
+                          <td>
+                            <a 
+                              href={`/admin/ocorrencias/${issue.id}`}
+                              className="btn btn-sm btn-primary"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <i className="ph-duotone ph-eye me-1"></i>
+                              Ver Detalhes
+                            </a>
                           </td>
                         </tr>
                       ))}
