@@ -263,7 +263,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
       </nav>
 
-      <header className="pc-header" style={{ background: '#1f2937' }}>
+      <header className="pc-header" style={{ background: '#1f2937', paddingTop: 'env(safe-area-inset-top, 40px)' }}>
         <div className="header-wrapper">
           <div className="me-auto pc-mob-drp">
             <ul className="list-unstyled d-flex align-items-center">
