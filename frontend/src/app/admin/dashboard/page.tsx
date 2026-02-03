@@ -43,6 +43,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     if (!loading && (!user || user.role !== 'admin')) {
       router.push('/login');
+      return;
     }
   }, [user, loading, router]);
 
@@ -139,8 +140,8 @@ export default function AdminDashboard() {
     }
   };
 
-  if (!mounted || loading || !user || user.role !== 'admin') {
-    return <div className="container mt-5"><p>Carregando...</p></div>;
+  if (!mounted || !user || user.role !== 'admin') {
+    return null;
   }
 
   const markers = issues.map((issue, index) => {
