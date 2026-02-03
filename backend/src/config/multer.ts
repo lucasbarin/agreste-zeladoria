@@ -17,8 +17,7 @@ const storage = new CloudinaryStorage({
   params: async (req, file) => {
     return {
       folder: 'agreste-zeladoria/issues',
-      allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
-      transformation: [{ width: 1200, height: 1200, crop: 'limit' }],
+      format: 'jpg',
       public_id: `issue-${Date.now()}-${Math.round(Math.random() * 1E9)}`,
     };
   },
