@@ -147,6 +147,8 @@ export default function AdminIssueDetailPage() {
     popup: `<strong>${getTypeName(issue.type)}</strong>`
   }];
 
+  console.log('✨ [IssueDetail] Renderizando página completa (chegou no JSX final)');
+
   return (
     <>
       <div className="page-header">
