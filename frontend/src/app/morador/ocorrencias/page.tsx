@@ -118,7 +118,7 @@ export default function OcorrenciasPage() {
                   <div className="card h-100">
                     {issue.photo_url && (
                       <img
-                        src={`${process.env.NEXT_PUBLIC_API_URL}${issue.photo_url}`}
+                        src={issue.photo_url.startsWith('http') ? issue.photo_url : `${process.env.NEXT_PUBLIC_API_URL}${issue.photo_url}`}
                         className="card-img-top"
                         alt="Foto da ocorrência"
                         style={{ height: '200px', objectFit: 'cover' }}

@@ -97,7 +97,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       const sidebarHideBtn = document.getElementById('sidebar-hide');
       const body = document.body;
 
-      if (!sidebarHideBtn) return;
+      if (!sidebarHideBtn) {
+        console.warn('Menu hamburguer não encontrado');
+        return;
+      }
 
       const toggleSidebar = (e: Event) => {
         e.preventDefault();
@@ -105,7 +108,13 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         body.classList.toggle('mob-sidebar-active');
       };
 
-      sidebarHideBtn.addEventListener('click', toggleSidebar);
+      // Remover listeners antigos se existirem
+      sidebarHideBtn.replaceWith(sidebarHideBtn.cloneNode(true));
+      const newSidebarBtn = document.getElementById('sidebar-hide');
+      
+      if (newSidebarBtn) {
+        newSidebarBtn.addEventListener('click', toggleSidebar, { passive: false });
+      }
 
       const sidebarLinks = document.querySelectorAll('.pc-sidebar .pc-link');
       const closeOnLinkClick = () => {
@@ -131,7 +140,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       document.addEventListener('click', closeOnOverlayClick);
 
       return () => {
-        sidebarHideBtn.removeEventListener('click', toggleSidebar);
+        if (newSidebarBtn) {
+          newSidebarBtn.removeEventListener('click', toggleSidebar);
+        }
         sidebarLinks.forEach(link => {
           link.removeEventListener('click', closeOnLinkClick);
         });
@@ -139,11 +150,26 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       };
     };
 
-    const sidebarTimer = setTimeout(initMobileSidebar, 200);
+    // Tentar múltiplas vezes até encontrar o elemento
+    let cleanupFn: (() => void) | undefined;
+    let attempts = 0;
+    const maxAttempts = 10;
+    
+    const tryInit = () => {
+      const btn = document.getElementById('sidebar-hide');
+      if (btn || attempts >= maxAttempts) {
+        cleanupFn = initMobileSidebar();
+      } else {
+        attempts++;
+        setTimeout(tryInit, 100);
+      }
+    };
+
+    tryInit();
 
     return () => {
       clearTimeout(loaderTimer);
-      clearTimeout(sidebarTimer);
+      if (cleanupFn) cleanupFn();
     };
   }, [pathname]);
 

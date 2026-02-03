@@ -166,7 +166,7 @@ export default function IssueDetailPage() {
                   <h5 className="card-title">Foto</h5>
                   <hr />
                   <img 
-                    src={`${process.env.NEXT_PUBLIC_API_URL}${issue.photo_url}`}
+                    src={issue.photo_url.startsWith('http') ? issue.photo_url : `${process.env.NEXT_PUBLIC_API_URL}${issue.photo_url}`}
                     alt="Foto da ocorrência"
                     className="img-fluid rounded"
                   />
