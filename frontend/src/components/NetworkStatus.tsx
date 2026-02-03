@@ -1,18 +1,30 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import api from '@/lib/api';
 
 export default function NetworkStatus() {
-  const [status, setStatus] = useState<'checking' | 'online' | 'slow' | 'offline'>('checking');
+  const [status, setStatus] = useState<'checking' | 'online' | 'slow' | 'offline'>('online');
   const [ping, setPing] = useState<number | null>(null);
+  const isCheckingRef = useRef(false);
+  const mountedRef = useRef(false);
 
   useEffect(() => {
+    mountedRef.current = true;
+    
     const checkStatus = async () => {
+      // Prevenir múltiplas requisições simultâneas
+      if (isCheckingRef.current || !mountedRef.current) return;
+      
+      isCheckingRef.current = true;
       const start = Date.now();
+      
       try {
-        await api.get('/api/health');
+        await api.get('/api/health', { timeout: 8000 });
         const duration = Date.now() - start;
+        
+        if (!mountedRef.current) return;
+        
         setPing(duration);
         
         if (duration < 1000) {
@@ -23,16 +35,23 @@ export default function NetworkStatus() {
           setStatus('slow');
         }
       } catch (error) {
+        if (!mountedRef.current) return;
         setStatus('offline');
         setPing(null);
+      } finally {
+        isCheckingRef.current = false;
       }
     };
 
-    // Verificar ao montar e a cada 30s
-    checkStatus();
-    const interval = setInterval(checkStatus, 30000);
+    // Verificar após 5s (dar tempo do backend acordar) e depois a cada 60s
+    const initialTimeout = setTimeout(checkStatus, 5000);
+    const interval = setInterval(checkStatus, 60000);
     
-    return () => clearInterval(interval);
+    return () => {
+      mountedRef.current = false;
+      clearTimeout(initialTimeout);
+      clearInterval(interval);
+    };
   }, []);
 
   // Mostrar apenas se houver problemas

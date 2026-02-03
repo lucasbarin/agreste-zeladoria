@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { issueService } from '@/lib/issues';
@@ -21,6 +21,7 @@ export default function AdminIssueDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [updating, setUpdating] = useState(false);
+  const loadedRef = useRef(false);
 
   useEffect(() => {
     if (!authLoading && (!user || user.role !== 'admin')) {
@@ -33,11 +34,16 @@ export default function AdminIssueDetailPage() {
       return;
     }
 
+    // Prevenir múltiplas cargas da mesma ocorrência
+    if (loadedRef.current) return;
+    loadedRef.current = true;
+
     const loadIssue = async () => {
       try {
         setLoading(true);
         const data = await issueService.getById(params.id as string);
         setIssue(data);
+        setError('');
       } catch (err: any) {
         setError(err.response?.data?.error || 'Erro ao carregar ocorrência');
       } finally {

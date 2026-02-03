@@ -3,7 +3,7 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { listNotifications, markNotificationAsRead, markAllNotificationsAsRead, getUnreadNotificationCount, Notification } from '@/lib/notifications';
 import NetworkStatus from './NetworkStatus';
 
@@ -18,26 +18,53 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [showNotifications, setShowNotifications] = useState(false);
+  const mountedRef = useRef(true);
+  const loadingNotificationsRef = useRef(false);
 
   // Carregar notificações
   useEffect(() => {
-    loadNotifications();
-    const interval = setInterval(loadNotifications, 30000);
-    return () => clearInterval(interval);
+    mountedRef.current = true;
+    
+    // Carregar após 2s para não conflitar com AuthContext
+    const initialTimeout = setTimeout(() => {
+      if (mountedRef.current) loadNotifications();
+    }, 2000);
+    
+    const interval = setInterval(() => {
+      if (mountedRef.current) loadNotifications();
+    }, 60000); // A cada 60s ao invés de 30s
+    
+    return () => {
+      mountedRef.current = false;
+      clearTimeout(initialTimeout);
+      clearInterval(interval);
+    };
   }, []);
 
   async function loadNotifications() {
+    // Prevenir múltiplas chamadas simultâneas
+    if (loadingNotificationsRef.current || !mountedRef.current) return;
+    
+    loadingNotificationsRef.current = true;
+    
     try {
       const [notifs, count] = await Promise.all([
         listNotifications().catch(() => []),
         getUnreadNotificationCount().catch(() => 0)
       ]);
+      
+      if (!mountedRef.current) return;
+      
       setNotifications(Array.isArray(notifs) ? notifs.slice(0, 10) : []);
       setUnreadCount(typeof count === 'number' ? count : 0);
     } catch (error) {
       console.error('Erro ao carregar notificações:', error);
-      setNotifications([]);
-      setUnreadCount(0);
+      if (mountedRef.current) {
+        setNotifications([]);
+        setUnreadCount(0);
+      }
+    } finally {
+      loadingNotificationsRef.current = false;
     }
   }
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { issueService } from '@/lib/issues';
@@ -34,6 +34,7 @@ export default function AdminDashboard() {
   const [loadingRequests, setLoadingRequests] = useState(true);
   const [stats, setStats] = useState({ aberto: 0, em_andamento: 0, resolvido: 0, total: 0 });
   const [mounted, setMounted] = useState(false);
+  const loadedRef = useRef(false);
 
   // Garantir que está montado no cliente
   useEffect(() => {
@@ -48,7 +49,9 @@ export default function AdminDashboard() {
   }, [user, loading, router]);
 
   useEffect(() => {
-    if (mounted && user?.role === 'admin') {
+    // Prevenir múltiplas cargas dos mesmos dados
+    if (mounted && user?.role === 'admin' && !loadedRef.current) {
+      loadedRef.current = true;
       loadIssues();
       loadIssueTypes();
       loadPendingRequests();
