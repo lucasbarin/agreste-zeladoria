@@ -15,6 +15,7 @@
     "@capacitor/cli": "^8.0.0",
     "@capacitor/core": "^8.0.0",
     "@capacitor/geolocation": "^8.0.0",
+    "@capacitor/ios": "^8.0.2",
     "apexcharts": "^5.3.6",
     "axios": "^1.13.2",
     "leaflet": "^1.9.4",
