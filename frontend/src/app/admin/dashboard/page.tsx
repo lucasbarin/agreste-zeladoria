@@ -66,7 +66,7 @@ export default function AdminDashboard() {
       ]);
 
       const cartRequests = (cartRes.data || [])
-        .filter((r: any) => !r.approved)
+        .filter((r: any) => r.approved === false || r.approved === null)
         .map((r: any) => ({
           id: r.id,
           type: 'cart' as const,
@@ -78,7 +78,7 @@ export default function AdminDashboard() {
         }));
 
       const tractorRequests = (tractorRes.data || [])
-        .filter((r: any) => !r.approved)
+        .filter((r: any) => r.approved === false || r.approved === null)
         .map((r: any) => ({
           id: r.id,
           type: 'tractor' as const,
@@ -89,7 +89,7 @@ export default function AdminDashboard() {
         }));
 
       const chainsawRequests = (chainsawRes.data || [])
-        .filter((r: any) => !r.approved)
+        .filter((r: any) => r.approved === false || r.approved === null)
         .map((r: any) => ({
           id: r.id,
           type: 'chainsaw' as const,
@@ -483,7 +483,7 @@ function getStatusColor(status: IssueStatus): string {
 
 function getRequestTypeName(type: string): string {
   const types: Record<string, string> = {
-    cart: 'Carrinho de Mão',
+    cart: 'Carreta',
     tractor: 'Trator',
     chainsaw: 'Motosserra'
   };
