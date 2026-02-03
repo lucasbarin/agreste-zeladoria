@@ -283,8 +283,20 @@ export default function ConfiguracoesPage() {
                         onChange={(e) => handleChange(setting.key, e.target.value)}
                         step={getSettingStep(setting.key)}
                         min={setting.key === 'available_carts' ? '1' : '0'}
-          {/* App Icon Configuration */}
-          <div className="card">
+                      />
+                    </div>
+                  ))}
+
+                  <div className="d-flex gap-2 mb-4">
+                    <button type="submit" className="btn btn-primary" disabled={saving}>
+                      {saving ? 'Salvando...' : 'Salvar Configurações'}
+                    </button>
+                  </div>
+                </form>
+              )}
+
+              {/* App Icon Configuration */}
+              <div className="card mt-4">
             <div className="card-header">
               <h5>Ícone do Aplicativo (iOS/Android)</h5>
             </div>
@@ -379,54 +391,6 @@ export default function ConfiguracoesPage() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-                        required
-                      />
-                      {setting.description && (
-                        <small className="form-text text-muted">
-                          {setting.description}
-                        </small>
-                      )}
-                      <small className="form-text text-muted d-block">
-                        <strong>Última atualização:</strong> {new Date(setting.updated_at).toLocaleString('pt-BR')}
-                      </small>
-                    </div>
-                  ))}
-
-                  <hr />
-
-                  <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button
-                      type="button"
-                      onClick={loadSettings}
-                      className="btn btn-secondary"
-                      disabled={saving}
-                    >
-                      <i className="feather icon-rotate-ccw me-2"></i>
-                      Cancelar
-                    </button>
-                    <button
-                      type="submit"
-                      className="btn btn-primary"
-                      disabled={saving}
-                    >
-                      {saving ? (
-                        <>
-                          <span className="spinner-border spinner-border-sm me-2" role="status"></span>
-                          Salvando...
-                        </>
-                      ) : (
-                        <>
-                          <i className="feather icon-save me-2"></i>
-                          Salvar Configurações
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </form>
-              )}
             </div>
           </div>
 
