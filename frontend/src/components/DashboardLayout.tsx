@@ -115,32 +115,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   }
 
   useEffect(() => {
-    console.log('🎬 [DashboardLayout] useEffect hideLoader triggered');
-    const hideLoader = () => {
-      console.log('🔍 [DashboardLayout] Procurando .loader-bg...');
-      const loader = document.querySelector('.loader-bg');
-      console.log('🎯 [DashboardLayout] Loader encontrado:', !!loader);
-      if (loader) {
-        console.log('✅ [DashboardLayout] Escondendo loader...');
-        (loader as HTMLElement).style.display = 'none';
-        // Também remover do DOM para garantir
-        loader.remove();
-        console.log('✅ [DashboardLayout] Loader removido!');
-      } else {
-        console.log('⚠️ [DashboardLayout] Loader não encontrado no DOM');
-      }
-    };
-
-    // Executar imediatamente
-    hideLoader();
-    
-    // E depois de um pequeno delay
-    const loaderTimer = setTimeout(hideLoader, 100);
-    
-    // E depois de mais tempo para garantir
-    const loaderTimer2 = setTimeout(hideLoader, 500);
-    const loaderTimer3 = setTimeout(hideLoader, 1000);
-
     const initMobileSidebar = () => {
       const sidebarHideBtn = document.getElementById('sidebar-hide');
       const body = document.body;
@@ -216,9 +190,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     tryInit();
 
     return () => {
-      clearTimeout(loaderTimer);
-      clearTimeout(loaderTimer2);
-      clearTimeout(loaderTimer3);
       if (cleanupFn) cleanupFn();
     };
   }, [pathname]);
@@ -254,12 +225,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   return (
     <>
-      <div className="loader-bg">
-        <div className="pc-loader">
-          <div className="loader-fill"></div>
-        </div>
-      </div>
-
+      {/* Loader removido - causava conflito DOM com React durante navegação */}
+      
       <nav className="pc-sidebar">
         <div className="navbar-wrapper">
           <div className="m-header">
