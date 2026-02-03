@@ -42,7 +42,7 @@ export default function ChainsawDetailPage() {
       try {
         setLoading(true);
         const response = await api.get(`/api/chainsaw/${params.id}`);
-        setRequest(response.data);
+        setRequest(response.data.request);
       } catch (err: any) {
         setError(err.response?.data?.error || 'Erro ao carregar solicitação');
       } finally {
