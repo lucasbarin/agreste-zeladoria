@@ -21,35 +21,46 @@ export default function AdminIssueDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [updating, setUpdating] = useState(false);
-  const loadedRef = useRef(false);
-  const redirectedRef = useRef(false);
+  const hasLoadedRef = useRef(false);
+  const currentIdRef = useRef<string | null>(null);
 
+  // Verificar autenticação - separado do carregamento de dados
   useEffect(() => {
-    // Prevenir redirect infinito
     if (!authLoading && (!user || user.role !== 'admin')) {
-      if (!redirectedRef.current) {
-        redirectedRef.current = true;
-        router.push('/login');
-      }
-      return;
+      router.replace('/login'); // usar replace ao invés de push
     }
+  }, [user, authLoading, router]);
 
-    if (!user || user.role !== 'admin' || !params.id) {
-      setLoading(false);
-      return;
-    }
-
-    // Prevenir múltiplas cargas da mesma ocorrência
-    if (loadedRef.current) return;
-    loadedRef.current = true;
-
+  // Carregar dados da ocorrência
+  useEffect(() => {
     const loadIssue = async () => {
+      // Só executar se:
+      // 1. Usuário está autenticado e é admin
+      // 2. Temos um ID válido
+      // 3. Ainda não carregamos esses dados (ou é um ID diferente)
+      if (!user || user.role !== 'admin' || !params.id) {
+        setLoading(false);
+        return;
+      }
+
+      const issueId = params.id as string;
+      
+      // Se já carregamos esse ID específico, não carregar novamente
+      if (hasLoadedRef.current && currentIdRef.current === issueId) {
+        return;
+      }
+
+      // Marcar como carregado
+      hasLoadedRef.current = true;
+      currentIdRef.current = issueId;
+
       try {
         setLoading(true);
-        const data = await issueService.getById(params.id as string);
-        setIssue(data);
         setError('');
+        const data = await issueService.getById(issueId);
+        setIssue(data);
       } catch (err: any) {
+        console.error('Erro ao carregar ocorrência:', err);
         setError(err.response?.data?.error || 'Erro ao carregar ocorrência');
       } finally {
         setLoading(false);
@@ -57,7 +68,7 @@ export default function AdminIssueDetailPage() {
     };
 
     loadIssue();
-  }, [user, authLoading, params.id]); // Removido 'router' das dependências
+  }, [user, params.id]); // Removido authLoading e router
 
   const handleStatusChange = async (newStatus: IssueStatus) => {
     if (!issue) return;
