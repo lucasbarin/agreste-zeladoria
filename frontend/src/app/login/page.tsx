@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function LoginPage() {
+function LoginForm() {
   const { login } = useAuth();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState('');
@@ -109,5 +109,13 @@ export default function LoginPage() {
       <script src="/js/base/globals.js" async />
       <script src="/js/base/nav.js" async />
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="container min-vh-100 d-flex align-items-center justify-content-center"><div className="spinner-border text-primary" role="status"><span className="visually-hidden">Carregando...</span></div></div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
