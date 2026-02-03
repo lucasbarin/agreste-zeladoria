@@ -156,10 +156,6 @@ export default function AdminDashboard() {
     }
   };
 
-  if (!mounted || !user || user.role !== 'admin') {
-    return null;
-  }
-
   // Usar useMemo para evitar recriar markers a cada render
   const markers = useMemo(() => {
     return issues.map((issue) => {
@@ -175,11 +171,15 @@ export default function AdminDashboard() {
           <a href="/admin/ocorrencias/${issue.id}" style="display: inline-block; margin-top: 8px; padding: 4px 12px; background: #0d6efd; color: white; text-decoration: none; border-radius: 4px; font-size: 12px;">Ver Detalhes</a>
         </div>
       `,
-      color,
-      icon
+        color,
+        icon
       };
     });
   }, [issues, issueTypes]); // Recalcular apenas quando issues ou issueTypes mudarem
+
+  if (!mounted || !user || user.role !== 'admin') {
+    return null;
+  }
 
   return (
     <>
