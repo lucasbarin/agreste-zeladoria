@@ -3,9 +3,10 @@ import { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'com.agreste.zeladoria',
   appName: 'Agreste Zeladoria',
-  webDir: 'out',
+  webDir: '.next/static',
   server: {
-    androidScheme: 'https'
+    url: 'https://agreste-zeladoria.vercel.app',
+    cleartext: false
   },
   plugins: {
     Camera: {
