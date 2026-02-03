@@ -294,9 +294,11 @@ export default function ConfiguracoesPage() {
                   </div>
                 </form>
               )}
+            </div>
+          </div>
 
-              {/* App Icon Configuration */}
-              <div className="card mt-4">
+          {/* App Icon Configuration */}
+          <div className="card mt-4">
             <div className="card-header">
               <h5>Ícone do Aplicativo (iOS/Android)</h5>
             </div>
