@@ -148,12 +148,12 @@ export default function IssueDetailPage() {
               <div className="card-body">
                 <h5 className="card-title">Localização</h5>
                 <hr />
-                <LeafletMap
-                  center={[issue.latitude, issue.longitude]}
-                  zoom={16}
-                  markers={markers}
-                  height="300px"
-                />
+                <div className="bg-secondary rounded d-flex align-items-center justify-content-center" style={{ height: '300px' }}>
+                  <div className="text-center text-white">
+                    <i className="ph-duotone ph-map-pin f-32"></i>
+                    <p className="mt-2 mb-0">Mapa desabilitado temporariamente</p>
+                  </div>
+                </div>
                 <p className="text-muted mt-2 mb-0 small">
                   Lat: {issue.latitude.toFixed(6)}, Lng: {issue.longitude.toFixed(6)}
                 </p>

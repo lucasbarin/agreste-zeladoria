@@ -224,12 +224,12 @@ export default function NovaOcorrenciaAdminPage() {
                 <div className="mb-3">
                   <label className="form-label">Localização *</label>
                   <div style={{ height: '300px', borderRadius: '8px', overflow: 'hidden' }}>
-                    <LeafletMap
-                      center={location}
-                      zoom={15}
-                      draggableMarker
-                      onLocationSelect={handleLocationSelect}
-                    />
+                    <div className="bg-secondary rounded d-flex align-items-center justify-content-center h-100">
+                      <div className="text-center text-white">
+                        <i className="ph-duotone ph-map-pin f-32"></i>
+                        <p className="mt-2 mb-0">Mapa desabilitado temporariamente</p>
+                      </div>
+                    </div>
                   </div>
                   <small className="form-text text-muted mt-2 d-block">
                     Arraste o marcador para ajustar a localização exata

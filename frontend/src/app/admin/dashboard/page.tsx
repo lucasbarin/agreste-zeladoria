@@ -322,12 +322,13 @@ export default function AdminDashboard() {
               {loadingIssues ? (
                 <div className="p-5 text-center">Carregando...</div>
               ) : issues.length > 0 ? (
-                <LeafletMap
-                  center={[issues[0].latitude, issues[0].longitude]}
-                  zoom={15}
-                  markers={markers}
-                  height="500px"
-                />
+                <div className="bg-secondary rounded d-flex align-items-center justify-content-center" style={{ height: '500px' }}>
+                  <div className="text-center text-white">
+                    <i className="ph-duotone ph-map-pin f-48 mb-3"></i>
+                    <p className="mb-1">Mapa temporariamente desabilitado</p>
+                    <p className="small mb-0">{issues.length} ocorrências registradas</p>
+                  </div>
+                </div>
               ) : (
                 <div className="p-5 text-center text-muted">Nenhuma ocorrência cadastrada</div>
               )}

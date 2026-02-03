@@ -244,13 +244,13 @@ export default function NovaOcorrenciaPage() {
                 </div>
 
                 <div className="mb-3">
-                  <LeafletMap
-                    center={[formData.latitude, formData.longitude]}
-                    zoom={15}
-                    height="400px"
-                    draggableMarker
-                    onLocationSelect={handleLocationSelect}
-                  />
+                  <div className="bg-secondary rounded d-flex align-items-center justify-content-center" style={{ height: '400px' }}>
+                    <div className="text-center text-white">
+                      <i className="ph-duotone ph-map-pin f-32"></i>
+                      <p className="mt-2 mb-0">Mapa desabilitado temporariamente</p>
+                      <p className="small mb-0">Use o botão de geolocalização</p>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="row">
