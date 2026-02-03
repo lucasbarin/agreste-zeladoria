@@ -25,12 +25,9 @@ export default function AdminIssueDetailPage() {
   const redirectedRef = useRef(false);
 
   useEffect(() => {
-    console.log('[AdminIssueDetail] useEffect:', { authLoading, user: user?.role, paramsId: params.id });
-    
     // Prevenir redirect infinito
     if (!authLoading && (!user || user.role !== 'admin')) {
       if (!redirectedRef.current) {
-        console.log('[AdminIssueDetail] Redirecionando para login');
         redirectedRef.current = true;
         router.push('/login');
       }
@@ -43,12 +40,7 @@ export default function AdminIssueDetailPage() {
     }
 
     // Prevenir múltiplas cargas da mesma ocorrência
-    if (loadedRef.current) {
-      console.log('[AdminIssueDetail] Já carregado, ignorando');
-      return;
-    }
-    
-    console.log('[AdminIssueDetail] Carregando ocorrência:', params.id);
+    if (loadedRef.current) return;
     loadedRef.current = true;
 
     const loadIssue = async () => {

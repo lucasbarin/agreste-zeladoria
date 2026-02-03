@@ -25,48 +25,37 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Prevenir múltiplas execuções
-    if (loadedRef.current) {
-      console.log('[AuthContext] Já carregado, ignorando');
-      return;
-    }
+    if (loadedRef.current) return;
     loadedRef.current = true;
-    
-    console.log('[AuthContext] Inicializando...');
     
     // Carregar usuário do localStorage e validar token
     const loadUser = async () => {
       const storedUser = authService.getUser();
       const token = authService.getToken();
       
-      console.log('[AuthContext] loadUser:', { hasUser: !!storedUser, hasToken: !!token });
-      
       if (storedUser && token) {
         try {
-          console.log('[AuthContext] Validando token...');
           // Validar se o token ainda é válido (com timeout de 10s)
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 10000);
           
           const validUser = await authService.me();
           clearTimeout(timeoutId);
-          console.log('[AuthContext] Token válido, usuário:', validUser.email);
           setUser(validUser);
         } catch (error: any) {
-          console.log('[AuthContext] Erro ao validar token:', error.message);
           // Se for timeout ou erro de rede, manter usuário logado
           if (error.name === 'AbortError' || error.code === 'ECONNABORTED' || !navigator.onLine) {
-            console.log('[AuthContext] Erro de rede ou timeout, mantendo usuário logado localmente');
+            console.log('Erro de rede ou timeout, mantendo usuário logado localmente');
             setUser(storedUser);
           } else {
             // Token inválido ou expirado - fazer logout
-            console.log('[AuthContext] Token expirado ou inválido, fazendo logout...');
+            console.log('Token expirado ou inválido, fazendo logout...');
             authService.logout();
             setUser(null);
           }
         }
       }
       setLoading(false);
-      console.log('[AuthContext] Carregamento concluído');
     };
 
     loadUser();

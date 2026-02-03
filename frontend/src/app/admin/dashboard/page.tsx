@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { issueService } from '@/lib/issues';
@@ -160,14 +160,15 @@ export default function AdminDashboard() {
     return null;
   }
 
-  const markers = issues.map((issue, index) => {
-    const color = getIssueTypeColor(issueTypes, issue.type);
-    const icon = getIssueTypeIcon(issueTypes, issue.type);
-    console.log(`Issue ${issue.id}: type=${issue.type}, color=${color}, icon=${icon}`);
-    return {
-      id: issue.id,
-      position: [issue.latitude, issue.longitude] as [number, number],
-      popup: `
+  // Usar useMemo para evitar recriar markers a cada render
+  const markers = useMemo(() => {
+    return issues.map((issue) => {
+      const color = getIssueTypeColor(issueTypes, issue.type);
+      const icon = getIssueTypeIcon(issueTypes, issue.type);
+      return {
+        id: issue.id,
+        position: [issue.latitude, issue.longitude] as [number, number],
+        popup: `
         <div style="min-width: 200px;">
           <strong>${getTypeName(issue.type)}</strong><br/>
           Status: ${getStatusName(issue.status)}<br/>
@@ -176,11 +177,9 @@ export default function AdminDashboard() {
       `,
       color,
       icon
-    };
-  });
-
-  return (
-    <>
+      };
+    });
+  }, [issues, issueTypes]); // Recalcular apenas quando issues ou issueTypes mudarem
       {/* Page Header */}
       <div className="page-header">
         <div className="page-block">
