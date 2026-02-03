@@ -251,12 +251,29 @@ router.put('/:id/status', authMiddleware, async (req: Request, res: Response) =>
       concluido: `Sua carreta foi concluída.`
     };
 
+    const title = notificationTitles[status as keyof typeof notificationTitles];
+    const message = notificationMessages[status as keyof typeof notificationMessages];
+
+    // Notificação in-app
     await createNotification(
       cartRequest.user_id,
       `cart_${status}`,
-      notificationTitles[status as keyof typeof notificationTitles],
-      notificationMessages[status as keyof typeof notificationMessages],
+      title,
+      message,
       `/morador/carretas/${id}`
+    );
+
+    // Push notification
+    const { sendPushNotification } = await import('../services/pushNotification.service');
+    await sendPushNotification(
+      cartRequest.user_id,
+      title,
+      message,
+      {
+        type: 'cart_status_changed',
+        requestId: id,
+        status: status
+      }
     );
 
     // Audit log

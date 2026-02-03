@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { sendPushNotification } from '../services/pushNotification.service';
 
 const prisma = new PrismaClient();
 
@@ -69,11 +70,27 @@ export async function notifyIssueStatusChange(
     resolvido: 'Resolvido'
   };
 
-  return createNotification(
+  const title = 'Status da Ocorrência Atualizado';
+  const message = `Sua ocorrência mudou de "${statusNames[oldStatus]}" para "${statusNames[newStatus]}"`;
+  
+  // Criar notificação in-app (banco de dados)
+  await createNotification(
     userId,
     'issue_status_changed',
-    'Status da Ocorrência Atualizado',
-    `Sua ocorrência mudou de "${statusNames[oldStatus]}" para "${statusNames[newStatus]}"`,
+    title,
+    message,
     `/morador/ocorrencias/${issueId}`
+  );
+  
+  // Enviar push notification
+  await sendPushNotification(
+    userId,
+    title,
+    message,
+    {
+      type: 'issue_status_changed',
+      issueId: issueId,
+      status: newStatus
+    }
   );
 }

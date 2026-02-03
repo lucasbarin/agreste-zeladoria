@@ -23,6 +23,7 @@ model User {
   chainsaw_requests  ChainsawRequest[]
   issues             Issue[]
   tractor_requests   TractorRequest[]
+  device_tokens      DeviceToken[]
 
   @@map("users")
 }
@@ -163,4 +164,16 @@ model Notification {
   @@index([read])
   @@index([created_at])
   @@map("notifications")
+}
+
+model DeviceToken {
+  id         String   @id @default(uuid())
+  user_id    String
+  token      String   @unique
+  platform   String   @default("android")
+  created_at DateTime @default(now())
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+  @@map("device_tokens")
 }

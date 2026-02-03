@@ -12,6 +12,7 @@ import cartRoutes from './routes/cart.routes';
 import tractorRoutes from './routes/tractor.routes';
 import chainsawRoutes from './routes/chainsaw.routes';
 import notificationRoutes from './routes/notifications.routes';
+import pushNotificationRoutes from './routes/pushNotifications.routes';
 import settingsRoutes from './routes/settings.routes';
 
 // Utilitários
@@ -61,6 +62,7 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/tractor', tractorRoutes);
 app.use('/api/chainsaw', chainsawRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/notifications', pushNotificationRoutes); // Rotas push notifications
 app.use('/api/settings', settingsRoutes);
 
 // Middleware de erro 404
