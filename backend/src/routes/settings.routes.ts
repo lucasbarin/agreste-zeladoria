@@ -40,6 +40,31 @@ router.get('/:key', async (req: Request, res: Response) => {
   }
 });
 
+// Inicializar configurações padrão (admin apenas)
+router.post('/initialize', authMiddleware, adminMiddleware, async (req: Request, res: Response) => {
+  try {
+    const defaultSettings = [
+      { key: 'cart_price', value: '50.00', description: 'Valor cobrado pela solicitação de carreta (R$)' },
+      { key: 'min_hours_advance', value: '24', description: 'Horas mínimas de antecedência para solicitar carreta' },
+      { key: 'available_carts', value: '5', description: 'Número de carretas disponíveis' }
+    ];
+
+    const created = [];
+    for (const setting of defaultSettings) {
+      const existing = await prisma.systemSetting.findUnique({ where: { key: setting.key } });
+      if (!existing) {
+        const newSetting = await prisma.systemSetting.create({ data: setting });
+        created.push(newSetting);
+      }
+    }
+
+    res.json({ message: `${created.length} configurações inicializadas`, settings: created });
+  } catch (error) {
+    console.error('Erro ao inicializar configurações:', error);
+    res.status(500).json({ error: 'Erro ao inicializar configurações' });
+  }
+});
+
 // Atualizar configuração
 router.put('/:key', authMiddleware, adminMiddleware, async (req: Request, res: Response) => {
   try {
