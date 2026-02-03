@@ -231,29 +231,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </Link>
           </div>
 
-          <div className="card pc-user-card" style={{ marginTop: '0.5rem', position: 'relative', zIndex: 10 }}>
-            <div className="card-body">
-              <div className="nav-user-image">
-                {user.photo_url ? (
-                  <img 
-                    src={user.photo_url.startsWith('http') ? user.photo_url : `${process.env.NEXT_PUBLIC_API_URL}${user.photo_url}`}
-                    alt={user.name}
-                    className="rounded-circle"
-                    style={{ width: '40px', height: '40px', objectFit: 'cover' }}
-                  />
-                ) : (
-                  <div className="user-avtar rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
-                    {user.name.charAt(0).toUpperCase()}
-                  </div>
-                )}
-              </div>
-              <div className="mt-3">
-                <h6 className="mb-0 text-white">{user.name}</h6>
-                <small className="text-white-50">{isAdmin ? 'Administrador' : 'Morador'}</small>
-              </div>
-            </div>
-          </div>
-
           <div className="navbar-content">
             <ul className="pc-navbar">
               <li className="pc-item pc-caption">
