@@ -35,6 +35,7 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState({ aberto: 0, em_andamento: 0, resolvido: 0, total: 0 });
   const [mounted, setMounted] = useState(false);
   const loadedRef = useRef(false);
+  const redirectedRef = useRef(false);
 
   // Garantir que está montado no cliente
   useEffect(() => {
@@ -42,15 +43,24 @@ export default function AdminDashboard() {
   }, []);
 
   useEffect(() => {
+    console.log('[AdminDashboard] useEffect auth:', { loading, user: user?.role });
+    
     if (!loading && (!user || user.role !== 'admin')) {
-      router.push('/login');
+      if (!redirectedRef.current) {
+        console.log('[AdminDashboard] Redirecionando para login');
+        redirectedRef.current = true;
+        router.push('/login');
+      }
       return;
     }
-  }, [user, loading, router]);
+  }, [user, loading]); // Removido 'router'
 
   useEffect(() => {
+    console.log('[AdminDashboard] useEffect load:', { mounted, user: user?.role, loaded: loadedRef.current });
+    
     // Prevenir múltiplas cargas dos mesmos dados
     if (mounted && user?.role === 'admin' && !loadedRef.current) {
+      console.log('[AdminDashboard] Carregando dados');
       loadedRef.current = true;
       loadIssues();
       loadIssueTypes();

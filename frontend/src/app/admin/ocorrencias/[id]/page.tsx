@@ -22,10 +22,18 @@ export default function AdminIssueDetailPage() {
   const [error, setError] = useState('');
   const [updating, setUpdating] = useState(false);
   const loadedRef = useRef(false);
+  const redirectedRef = useRef(false);
 
   useEffect(() => {
+    console.log('[AdminIssueDetail] useEffect:', { authLoading, user: user?.role, paramsId: params.id });
+    
+    // Prevenir redirect infinito
     if (!authLoading && (!user || user.role !== 'admin')) {
-      router.push('/login');
+      if (!redirectedRef.current) {
+        console.log('[AdminIssueDetail] Redirecionando para login');
+        redirectedRef.current = true;
+        router.push('/login');
+      }
       return;
     }
 
@@ -35,7 +43,12 @@ export default function AdminIssueDetailPage() {
     }
 
     // Prevenir múltiplas cargas da mesma ocorrência
-    if (loadedRef.current) return;
+    if (loadedRef.current) {
+      console.log('[AdminIssueDetail] Já carregado, ignorando');
+      return;
+    }
+    
+    console.log('[AdminIssueDetail] Carregando ocorrência:', params.id);
     loadedRef.current = true;
 
     const loadIssue = async () => {
@@ -52,7 +65,7 @@ export default function AdminIssueDetailPage() {
     };
 
     loadIssue();
-  }, [user, authLoading, params.id, router]);
+  }, [user, authLoading, params.id]); // Removido 'router' das dependências
 
   const handleStatusChange = async (newStatus: IssueStatus) => {
     if (!issue) return;
