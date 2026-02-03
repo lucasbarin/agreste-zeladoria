@@ -20,6 +20,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const [showNotifications, setShowNotifications] = useState(false);
   const mountedRef = useRef(true);
   const loadingNotificationsRef = useRef(false);
+  const renderCountRef = useRef(0);
+
+  renderCountRef.current++;
+  console.log(`🔄 [DashboardLayout] RENDER #${renderCountRef.current}`, { user: user?.email, pathname });
 
   // Carregar notificações
   useEffect(() => {
