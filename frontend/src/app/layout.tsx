@@ -6,6 +6,10 @@ import { AuthProvider } from "@/contexts/AuthContext";
 export const metadata: Metadata = {
   title: "Agreste Zeladoria",
   description: "Sistema de gestão de ocorrências do condomínio",
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 
 export default function RootLayout({

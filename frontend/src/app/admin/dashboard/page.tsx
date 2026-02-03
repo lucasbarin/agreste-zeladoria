@@ -6,7 +6,18 @@ import { useAuth } from '@/contexts/AuthContext';
 import { issueService } from '@/lib/issues';
 import { listIssueTypes, getIssueTypeColor, getIssueTypeIcon, IssueType } from '@/lib/issueTypes';
 import { Issue, IssueStatus } from '@/types';
+import api from '@/lib/api';
 import dynamic from 'next/dynamic';
+
+interface PendingRequest {
+  id: string;
+  type: 'cart' | 'tractor' | 'chainsaw';
+  user_name: string;
+  apartment_or_house?: string;
+  requested_date: string;
+  created_at: string;
+  quantity?: number;
+}
 
 const LeafletMap = dynamic(() => import('@/components/Map/LeafletMap'), {
   ssr: false,
@@ -19,6 +30,8 @@ export default function AdminDashboard() {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [issueTypes, setIssueTypes] = useState<IssueType[]>([]);
   const [loadingIssues, setLoadingIssues] = useState(true);
+  const [pendingRequests, setPendingRequests] = useState<PendingRequest[]>([]);
+  const [loadingRequests, setLoadingRequests] = useState(true);
   const [stats, setStats] = useState({ aberto: 0, em_andamento: 0, resolvido: 0, total: 0 });
   const [mounted, setMounted] = useState(false);
 
@@ -37,8 +50,65 @@ export default function AdminDashboard() {
     if (mounted && user?.role === 'admin') {
       loadIssues();
       loadIssueTypes();
+      loadPendingRequests();
     }
   }, [user, mounted]);
+
+  const loadPendingRequests = async () => {
+    if (!mounted) return;
+    
+    try {
+      setLoadingRequests(true);
+      const [cartRes, tractorRes, chainsawRes] = await Promise.all([
+        api.get('/api/cart'),
+        api.get('/api/tractor'),
+        api.get('/api/chainsaw')
+      ]);
+
+      const cartRequests = (cartRes.data || [])
+        .filter((r: any) => !r.approved)
+        .map((r: any) => ({
+          id: r.id,
+          type: 'cart' as const,
+          user_name: r.user?.name || 'N/A',
+          apartment_or_house: r.user?.apartment_or_house,
+          requested_date: r.requested_date,
+          created_at: r.created_at,
+          quantity: r.quantity
+        }));
+
+      const tractorRequests = (tractorRes.data || [])
+        .filter((r: any) => !r.approved)
+        .map((r: any) => ({
+          id: r.id,
+          type: 'tractor' as const,
+          user_name: r.user?.name || 'N/A',
+          apartment_or_house: r.user?.apartment_or_house,
+          requested_date: r.requested_date,
+          created_at: r.created_at
+        }));
+
+      const chainsawRequests = (chainsawRes.data || [])
+        .filter((r: any) => !r.approved)
+        .map((r: any) => ({
+          id: r.id,
+          type: 'chainsaw' as const,
+          user_name: r.user?.name || 'N/A',
+          apartment_or_house: r.user?.apartment_or_house,
+          requested_date: r.requested_date,
+          created_at: r.created_at
+        }));
+
+      const allRequests = [...cartRequests, ...tractorRequests, ...chainsawRequests]
+        .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
+
+      setPendingRequests(allRequests);
+    } catch (error) {
+      console.error('Erro ao carregar solicitações:', error);
+    } finally {
+      setLoadingRequests(false);
+    }
+  };
 
   const loadIssues = async () => {
     if (!mounted) return;
@@ -248,6 +318,79 @@ export default function AdminDashboard() {
         </div>
       </div>
 
+      {/* Pending Requests */}
+      <div className="row">
+        <div className="col-12">
+          <div className="card">
+            <div className="card-header">
+              <div className="d-flex align-items-center justify-content-between">
+                <h5 className="mb-0">Solicitações Pendentes de Aprovação</h5>
+                <span className="badge bg-warning">{pendingRequests.length}</span>
+              </div>
+            </div>
+            <div className="card-body">
+              {loadingRequests ? (
+                <div className="text-center py-4">
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Carregando...</span>
+                  </div>
+                </div>
+              ) : pendingRequests.length === 0 ? (
+                <div className="text-center py-4">
+                  <i className="ph-duotone ph-check-circle f-40 text-success"></i>
+                  <p className="text-muted mt-2">Nenhuma solicitação pendente! 🎉</p>
+                </div>
+              ) : (
+                <div className="table-responsive">
+                  <table className="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Tipo</th>
+                        <th>Solicitante</th>
+                        <th>Casa/Apto</th>
+                        <th>Data Solicitada</th>
+                        <th>Criado em</th>
+                        <th>Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {pendingRequests.map((request) => (
+                        <tr key={`${request.type}-${request.id}`}>
+                          <td>
+                            <span className={`badge bg-${getRequestTypeColor(request.type)}`}>
+                              <i className={`ph-duotone ${getRequestTypeIcon(request.type)} me-1`}></i>
+                              {getRequestTypeName(request.type)}
+                              {request.quantity && ` (${request.quantity}x)`}
+                            </span>
+                          </td>
+                          <td>{request.user_name}</td>
+                          <td>{request.apartment_or_house || '-'}</td>
+                          <td>
+                            <i className="ph-duotone ph-calendar me-2"></i>
+                            {new Date(request.requested_date).toLocaleDateString('pt-BR')}
+                          </td>
+                          <td>
+                            {new Date(request.created_at).toLocaleString('pt-BR')}
+                          </td>
+                          <td>
+                            <a 
+                              href={`/admin/${getRequestTypePath(request.type)}`}
+                              className="btn btn-sm btn-primary"
+                            >
+                              Gerenciar
+                            </a>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Recent Issues */}
       <div className="row">
         <div className="col-12">
@@ -336,4 +479,40 @@ function getStatusColor(status: IssueStatus): string {
     resolvido: 'success'
   };
   return colors[status];
+}
+
+function getRequestTypeName(type: string): string {
+  const types: Record<string, string> = {
+    cart: 'Carrinho de Mão',
+    tractor: 'Trator',
+    chainsaw: 'Motosserra'
+  };
+  return types[type] || type;
+}
+
+function getRequestTypeColor(type: string): string {
+  const colors: Record<string, string> = {
+    cart: 'primary',
+    tractor: 'success',
+    chainsaw: 'danger'
+  };
+  return colors[type] || 'secondary';
+}
+
+function getRequestTypeIcon(type: string): string {
+  const icons: Record<string, string> = {
+    cart: 'ph-shopping-cart',
+    tractor: 'ph-tractor',
+    chainsaw: 'ph-scissors'
+  };
+  return icons[type] || 'ph-file';
+}
+
+function getRequestTypePath(type: string): string {
+  const paths: Record<string, string> = {
+    cart: 'carretas',
+    tractor: 'tratores',
+    chainsaw: 'motosserra'
+  };
+  return paths[type] || '';
 }
