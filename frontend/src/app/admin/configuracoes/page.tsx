@@ -60,6 +60,33 @@ export default function ConfiguracoesPage() {
     }
   }
 
+  async function initializeSettings() {
+    if (!confirm('Deseja criar as configurações padrão do sistema?')) return;
+    
+    try {
+      setLoading(true);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/settings/initialize`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error('Erro ao inicializar configurações');
+      }
+      
+      const data = await response.json();
+      alert(data.message || 'Configurações inicializadas com sucesso!');
+      loadSettings();
+    } catch (error) {
+      console.error('Erro ao inicializar:', error);
+      alert('Erro ao inicializar configurações');
+    } finally {
+      setLoading(false);
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -163,6 +190,20 @@ export default function ConfiguracoesPage() {
                   <div className="spinner-border text-primary" role="status">
                     <span className="visually-hidden">Carregando...</span>
                   </div>
+                </div>
+              ) : settings.length === 0 ? (
+                <div className="text-center py-5">
+                  <i className="feather icon-settings" style={{ fontSize: '48px', opacity: 0.3 }}></i>
+                  <h5 className="mt-3">Nenhuma configuração encontrada</h5>
+                  <p className="text-muted">Clique no botão abaixo para criar as configurações iniciais do sistema.</p>
+                  <button
+                    type="button"
+                    onClick={initializeSettings}
+                    className="btn btn-primary"
+                  >
+                    <i className="feather icon-plus me-2"></i>
+                    Inicializar Configurações
+                  </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>
