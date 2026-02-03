@@ -23,38 +23,22 @@ export default function AdminIssueDetailPage() {
   const [updating, setUpdating] = useState(false);
   const hasLoadedRef = useRef(false);
   const currentIdRef = useRef<string | null>(null);
-  const renderCountRef = useRef(0);
-
-  renderCountRef.current++;
-  console.log(`🔄 [IssueDetail] RENDER #${renderCountRef.current}`, {
-    authLoading,
-    user: user?.email,
-    role: user?.role,
-    paramsId: params.id,
-    hasLoaded: hasLoadedRef.current,
-    currentId: currentIdRef.current
-  });
 
   // Verificar autenticação - separado do carregamento de dados
   useEffect(() => {
-    console.log('🔐 [IssueDetail] useEffect AUTH:', { authLoading, user: user?.email });
     if (!authLoading && (!user || user.role !== 'admin')) {
-      console.log('⚠️ [IssueDetail] Não autenticado, redirecionando...');
-      router.replace('/login'); // usar replace ao invés de push
+      router.replace('/login');
     }
   }, [user, authLoading, router]);
 
   // Carregar dados da ocorrência
   useEffect(() => {
-    console.log('📊 [IssueDetail] useEffect LOAD triggered:', { user: user?.email, paramsId: params.id });
-    
     const loadIssue = async () => {
       // Só executar se:
       // 1. Usuário está autenticado e é admin
       // 2. Temos um ID válido
       // 3. Ainda não carregamos esses dados (ou é um ID diferente)
       if (!user || user.role !== 'admin' || !params.id) {
-        console.log('⏸️ [IssueDetail] Pulando load:', { hasUser: !!user, isAdmin: user?.role === 'admin', hasId: !!params.id });
         setLoading(false);
         return;
       }
@@ -63,11 +47,9 @@ export default function AdminIssueDetailPage() {
       
       // Se já carregamos esse ID específico, não carregar novamente
       if (hasLoadedRef.current && currentIdRef.current === issueId) {
-        console.log('✅ [IssueDetail] Já carregado, ignorando:', issueId);
         return;
       }
 
-      console.log('📥 [IssueDetail] Carregando issue:', issueId);
       // Marcar como carregado
       hasLoadedRef.current = true;
       currentIdRef.current = issueId;
@@ -103,10 +85,7 @@ export default function AdminIssueDetailPage() {
     }
   };
 
-  console.log('🎨 [IssueDetail] Rendering decision:', { authLoading, loading, hasIssue: !!issue, hasError: !!error });
-
   if (authLoading) {
-    console.log('⏳ [IssueDetail] Mostrando loading (authLoading=true)');
     return (
       <div className="text-center py-5">
         <div className="spinner-border text-primary" role="status">
@@ -117,7 +96,6 @@ export default function AdminIssueDetailPage() {
   }
 
   if (loading) {
-    console.log('⏳ [IssueDetail] Mostrando loading (loading=true)');
     return (
       <div className="text-center py-5">
         <div className="spinner-border text-primary" role="status">
@@ -146,8 +124,6 @@ export default function AdminIssueDetailPage() {
     position: [issue.latitude, issue.longitude] as [number, number],
     popup: `<strong>${getTypeName(issue.type)}</strong>`
   }];
-
-  console.log('✨ [IssueDetail] Renderizando página completa (chegou no JSX final)');
 
   return (
     <>
@@ -258,12 +234,12 @@ export default function AdminIssueDetailPage() {
               <div className="card-body">
                 <h5 className="card-title">Localização</h5>
                 <hr />
-                <div className="bg-secondary rounded d-flex align-items-center justify-content-center" style={{ height: '300px' }}>
-                  <div className="text-center text-white">
-                    <i className="ph-duotone ph-map-pin f-32"></i>
-                    <p className="mt-2 mb-0">Mapa desabilitado temporariamente</p>
-                  </div>
-                </div>
+                <LeafletMap
+                  center={[issue.latitude, issue.longitude]}
+                  zoom={16}
+                  markers={markers}
+                  height="300px"
+                />
                 <p className="text-muted mt-2 mb-0 small">
                   Lat: {issue.latitude.toFixed(6)}, Lng: {issue.longitude.toFixed(6)}
                 </p>
