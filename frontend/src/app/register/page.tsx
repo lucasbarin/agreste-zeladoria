@@ -136,8 +136,6 @@ export default function RegisterPage() {
                     target="_blank" 
                     rel="noopener noreferrer"
                     style={{ color: '#e3a927', textDecoration: 'none' }}
-                    onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
-                    onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
                   >
                     Catenacom
                   </a>
