@@ -93,8 +93,10 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`📍 Health check: http://localhost:${PORT}/health`);
   console.log(`🌍 Ambiente: ${process.env.NODE_ENV || 'development'}`);
   
-  // Iniciar agendador de auto-conclusão
-  startAutoCompleteScheduler();
+  // Iniciar agendador de auto-conclusão após 30 segundos (evitar timeout no cold start do Render)
+  setTimeout(() => {
+    startAutoCompleteScheduler();
+  }, 30000);
 });
 
 export default app;

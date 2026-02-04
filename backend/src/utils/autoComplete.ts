@@ -78,13 +78,10 @@ export async function autoCompleteExpiredRequests() {
  * Inicia o processo automático de conclusão (executado a cada 1 hora)
  */
 export function startAutoCompleteScheduler() {
-  // Executa imediatamente na inicialização
-  autoCompleteExpiredRequests();
-
-  // Executa a cada 1 hora
+  console.log('🕐 Agendador de auto-conclusão iniciado (intervalo: 1 hora)');
+  
+  // Executa a cada 1 hora (NÃO executa imediatamente para evitar timeout no cold start)
   setInterval(async () => {
     await autoCompleteExpiredRequests();
   }, 60 * 60 * 1000); // 1 hora
-
-  console.log('🕐 Agendador de auto-conclusão iniciado (intervalo: 1 hora)');
 }
