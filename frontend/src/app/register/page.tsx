@@ -44,8 +44,8 @@ export default function RegisterPage() {
       <div className="container">
         <div className="row justify-content-center align-items-center" style={{ minHeight: '100vh', paddingTop: '2rem', paddingBottom: '2rem' }}>
           <div className="col-md-6">
-          <div className="card shadow">
-            <div className="card-body p-5">
+            <div className="card shadow">
+              <div className="card-body p-5">
               <div className="text-center mb-4">
                 <img src="/logo.png" alt="Agreste Zeladoria" height="70" className="mb-3" />
                 <h1 className="mb-2">Cadastro</h1>
@@ -142,6 +142,7 @@ export default function RegisterPage() {
                 </small>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
