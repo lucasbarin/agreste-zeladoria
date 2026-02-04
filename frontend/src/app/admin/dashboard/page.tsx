@@ -71,7 +71,7 @@ export default function AdminDashboard() {
       ]);
 
       const cartRequests = (cartRes.data || [])
-        .filter((r: any) => r.approved === false || r.approved === null)
+        .filter((r: any) => r.status === 'pendente')
         .map((r: any) => ({
           id: r.id,
           type: 'cart' as const,
@@ -83,7 +83,7 @@ export default function AdminDashboard() {
         }));
 
       const tractorRequests = (tractorRes.data || [])
-        .filter((r: any) => r.approved === false || r.approved === null)
+        .filter((r: any) => r.status === 'pendente')
         .map((r: any) => ({
           id: r.id,
           type: 'tractor' as const,
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
         }));
 
       const chainsawRequests = (chainsawRes.data || [])
-        .filter((r: any) => r.approved === false || r.approved === null)
+        .filter((r: any) => r.status === 'pendente')
         .map((r: any) => ({
           id: r.id,
           type: 'chainsaw' as const,
