@@ -449,6 +449,23 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <div className="pc-container">
         <div className="pc-content">
           {children}
+          
+          {/* Assinatura Catenacom */}
+          <footer className="text-center py-3 mt-5" style={{ borderTop: '1px solid #dee2e6' }}>
+            <small className="text-muted">
+              Developed by{' '}
+              <a 
+                href="https://catenacom.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ color: '#e3a927', textDecoration: 'none' }}
+                onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
+              >
+                Catenacom
+              </a>
+            </small>
+          </footer>
         </div>
       </div>
 

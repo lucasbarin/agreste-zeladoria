@@ -35,9 +35,10 @@ function LoginForm() {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center align-items-center min-vh-100">
-        <div className="col-md-5">
+    <div style={{ backgroundColor: '#e3a927', minHeight: '100vh' }}>
+      <div className="container">
+        <div className="row justify-content-center align-items-center" style={{ minHeight: '100vh', paddingTop: '2rem', paddingBottom: '2rem' }}>
+          <div className="col-md-5">
           <div className="card shadow">
             <div className="card-body p-5">
               <div className="text-center mb-4">
@@ -98,10 +99,27 @@ function LoginForm() {
                   Não tem conta? Cadastre-se
                 </Link>
               </div>
+
+              <div className="text-center mt-4 pt-3" style={{ borderTop: '1px solid #dee2e6' }}>
+                <small className="text-muted">
+                  Developed by{' '}
+                  <a 
+                    href="https://catenacom.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{ color: '#e3a927', textDecoration: 'none' }}
+                    onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                    onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
+                  >
+                    Catenacom
+                  </a>
+                </small>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
       {/* Scripts do Acorn */}
       <script src="/js/vendor/jquery-3.5.1.min.js" async />
