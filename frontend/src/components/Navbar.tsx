@@ -16,7 +16,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#1a472a' }}>
       <div className="container-fluid">
         <Link href={isAdmin ? '/admin/dashboard' : '/morador/dashboard'} className="navbar-brand d-flex align-items-center">
-          <img src="/logo.png" alt="Agreste Zeladoria" height="32" style={{ maxWidth: '120px', objectFit: 'contain' }} />
+          <img src="/logo.png" alt="Recanto do Agreste" height="32" style={{ maxWidth: '120px', objectFit: 'contain' }} />
         </Link>
         
         <div className="d-flex align-items-center">

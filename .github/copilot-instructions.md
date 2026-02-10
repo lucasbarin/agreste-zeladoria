@@ -1,4 +1,4 @@
-# Agreste Zeladoria - Guia para Agentes de IA
+# Recanto do Agreste - Guia para Agentes de IA
 
 ## Visão Geral do Projeto
 

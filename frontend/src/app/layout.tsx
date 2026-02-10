@@ -4,7 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 
 export const metadata: Metadata = {
-  title: "Agreste Zeladoria",
+  title: "Recanto do Agreste",
   description: "Sistema de gestão de ocorrências do condomínio",
   icons: {
     icon: '/icon.png',

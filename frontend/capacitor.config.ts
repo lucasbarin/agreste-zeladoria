@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.agreste.zeladoria',
-  appName: 'Agreste Zeladoria',
+  appName: 'Recanto do Agreste',
   webDir: '.next/static',
   server: {
     url: 'https://agreste-zeladoria.vercel.app',

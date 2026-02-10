@@ -1,4 +1,4 @@
-# 🚀 Agreste Zeladoria
+# 🚀 Recanto do Agreste
 
 Sistema web + mobile para gestão de ocorrências e serviços do condomínio **Residencial Recanto do Agreste**.
 

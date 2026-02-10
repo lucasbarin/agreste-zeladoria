@@ -47,9 +47,9 @@ export default function RegisterPage() {
             <div className="card shadow">
               <div className="card-body p-5">
               <div className="text-center mb-4">
-                <img src="/logo.png" alt="Agreste Zeladoria" height="70" className="mb-3" />
+                <img src="/logo.png" alt="Recanto do Agreste" height="70" className="mb-3" />
                 <h1 className="mb-2">Cadastro</h1>
-                <h6 className="text-muted">Crie sua conta no Agreste Zeladoria</h6>
+                <h6 className="text-muted">Crie sua conta no Recanto do Agreste</h6>
               </div>
 
               {error && (

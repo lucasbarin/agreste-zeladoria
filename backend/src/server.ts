@@ -48,7 +48,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 app.get('/health', (req, res) => {
   res.json({ 
     status: 'ok', 
-    message: 'Agreste Zeladoria API está rodando',
+    message: 'Recanto do Agreste API está rodando',
     timestamp: new Date().toISOString()
   });
 });
@@ -57,7 +57,7 @@ app.get('/health', (req, res) => {
 app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'ok', 
-    message: 'Agreste Zeladoria API está rodando',
+    message: 'Recanto do Agreste API está rodando',
     timestamp: new Date().toISOString()
   });
 });

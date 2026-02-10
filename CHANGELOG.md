@@ -1,4 +1,4 @@
-# 🎉 Agreste Zeladoria - Versão 1.0
+# 🎉 Recanto do Agreste - Versão 1.0
 
 **Data de Lançamento:** 16 de dezembro de 2025
 

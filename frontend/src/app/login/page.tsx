@@ -42,8 +42,8 @@ function LoginForm() {
           <div className="card shadow">
             <div className="card-body p-5">
               <div className="text-center mb-4">
-                <img src="/logo.png" alt="Agreste Zeladoria" height="80" className="mb-3" />
-                <h1 className="mb-2">Agreste Zeladoria</h1>
+                <img src="/logo.png" alt="Recanto do Agreste" height="80" className="mb-3" />
+                <h1 className="mb-2">Recanto do Agreste</h1>
                 <h6 className="text-muted">Faça login para continuar</h6>
               </div>
 

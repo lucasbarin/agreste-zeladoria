@@ -227,7 +227,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="navbar-wrapper">
           <div className="m-header" style={{ marginTop: 'max(env(safe-area-inset-top), 60px)', paddingBottom: '1rem' }}>
             <Link href={isAdmin ? '/admin/dashboard' : '/morador/dashboard'} className="b-brand text-primary">
-              <img src="/logo.png" alt="Agreste Zeladoria" className="logo-lg" style={{ maxHeight: '40px' }} />
+              <img src="/logo.png" alt="Recanto do Agreste" className="logo-lg" style={{ maxHeight: '40px' }} />
             </Link>
           </div>
 

@@ -1,4 +1,4 @@
-# 💰 Custos Mensais - Agreste Zeladoria
+# 💰 Custos Mensais - Recanto do Agreste
 
 ## 📊 Situação Atual (Fevereiro 2026)
 
@@ -245,7 +245,7 @@ Se faltar mais de 30 dias:
 
 ## 🎁 MINHA RECOMENDAÇÃO FINAL
 
-### Para o Agreste Zeladoria:
+### Para o Recanto do Agreste:
 
 **FASE 1 - Agora (Próximos 30 dias):**
 ```
